@@ -1,0 +1,537 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="modx.prosilver.en.xsl"?>
+<!--NOTICE: Please open this file in your web browser. If presented with a security warning, you may safely tell it to allow the blocked content.-->
+<!--For security purposes, please check: http://www.phpbb.com/mods/ for the latest version of this MOD.\nAlthough MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD.\nNo support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phpbb.com/mods/xml/modx-1.2.5.xsd">
+	<header>
+		<meta name="generator" content="MODX file generated with PP MODX Creator by tumba25 (online version)"/>
+		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
+		<title lang="en"><![CDATA[Classifieds MOD]]></title>
+		<description lang="en"><![CDATA[This MOD adds a classifieds / stock-market to your board.]]></description>
+		<author-notes lang="en"><![CDATA[This is a new version of abandoned Classifieds MOD by platinum_2007. If you want to upgrade from version 0.8.0, read the text file in contrib folder.
+
+Features list:
+- add your own classified ads (title, description, short description, thumbnail, images of product, your paypal email, phone number)
+- upload images of products, delete them, choose thumbnail
+- use lightbox to display big images
+- search advertisements
+- comments on advertisements
+- reporting problematic advertisements
+- display recent ads on index
+- display random ads on index
+- option to sort ads to many categories, created in ACP
+- "Add this" button to add the classifieds to your social networks
+- advertisers can set how long will be their ad active
+- RSS feeds about new ads
+- display 3 types of rules (general, for buyers and for sellers)
+- possibility to subscribe category to receive emails when a new ad is added to that cat
+- select which Custom profile fields will show in advertisements
+- block of random ads in Classifieds index
+- block of hot (most viewed) ads in Classifieds index
+- block of Advertiser's ads on single ad page
+- block of Last ads in user's profile page
+
+ACP features:
+- you can enable / disable almost everything
+- manage categories
+- manage ads (active, closed, sold, expired)
+- manage user's ads
+- purging expired, sold, closed and active ads via ACP
+- purging categories via ACP
+- manage Recent ads blocks, Random ads blocks and Advertiser's ads blocks
+- manage Trading rules, Rules for buyers and Rules for sellers via ACP
+- set the required number of posts to create ads
+- set the required number of posts to view ads
+- set if Location field has to be filled to create ads
+- permissions for users to view, create, delete, extend and edit their own ads
+- permissions for moderators to edit, delete and move ads
+- manage ad prefixes
+- manage locations
+- manage currency]]></author-notes>
+		<author-group>
+			<author>
+				<realname><![CDATA[Martin]]></realname>
+				<username><![CDATA[Kamahl19]]></username>
+				<homepage><![CDATA[http://phpbb3hacks.com]]></homepage>
+				<email><![CDATA[kamahl19@gmail.com]]></email>
+			</author>
+		</author-group>
+		<mod-version>1.2.1</mod-version>
+		<installation>
+			<level>easy</level>
+			<time>300</time>
+			<target-version>3.0.12</target-version>
+		</installation>
+		<history>
+			<entry>
+				<date>2010-07-10</date>
+				<rev-version>0.9.0</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[many bugs fixed]]></change>
+					<change><![CDATA[added new feature "Recent classifieds on index"]]></change>
+					<change><![CDATA[removed some useless things]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2010-07-14</date>
+				<rev-version>0.9.1</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[some small bug fixed]]></change>
+					<change><![CDATA[changed the way of writing Trading rules. Moved from ACP to language file.]]></change>
+					<change><![CDATA[some small template edits]]></change>
+					<change><![CDATA[added ACP option - where Recent ads block should be shown]]></change>
+					<change><![CDATA[improved way of displaying categories]]></change>
+					<change><![CDATA[buttons have language independence]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2010-07-20</date>
+				<rev-version>0.9.2</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[fixed displaying delete and edit button to all]]></change>
+					<change><![CDATA[fixed displaying delete comment button to all and added confirm box]]></change>
+					<change><![CDATA[added "Add this" button to share the classifieds on social networks]]></change>
+					<change><![CDATA[fixed some minor bugs]]></change>
+					<change><![CDATA[improved Recent ads box]]></change>
+					<change><![CDATA[improved ACP Classifieds management]]></change>
+					<change><![CDATA[added posibility to set the required number of posts to create ads]]></change>
+					<change><![CDATA[added posibility to set the required number of posts to view ads]]></change>
+					<change><![CDATA[added permissions for moderators to delete, edit and move ads]]></change>
+					<change><![CDATA[purging expired, sold and closed ads via ACP]]></change>
+					<change><![CDATA[added ads prefixes ([WTB] - wanted to buy, [S] - for sale, [T] - for trade, [S/T] - for sale or trade, [FREE] - for free)]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2010-09-08</date>
+				<rev-version>0.9.3</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[template bugs fixed]]></change>
+					<change><![CDATA[added prefix explain]]></change>
+					<change><![CDATA[search ads according by their prefix]]></change>
+					<change><![CDATA[added rules for traders and buyers]]></change>
+					<change><![CDATA[ACP - added posibility to set if the Ad prefix is mandatory or not]]></change>
+					<change><![CDATA[added side panel to signle_ad.php]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2010-09-13</date>
+				<rev-version>0.9.4</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[fixed Extend ad button]]></change>
+					<change><![CDATA[added Reporting advertisements]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2010-09-26</date>
+				<rev-version>0.9.5</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[changed some redirections]]></change>
+					<change><![CDATA[added Lightbox for viewing images]]></change>
+					<change><![CDATA[added possibility to Subscribe categories]]></change>
+					<change><![CDATA[added posibility to show some of Custom profile fields on advertisements]]></change>
+					<change><![CDATA[fixed few small php bugs]]></change>
+					<change><![CDATA[fixed few small template bugs]]></change>
+					<change><![CDATA[changed the order of displaying comments]]></change>
+					<change><![CDATA[fixed some issues with extending ads]]></change>
+					<change><![CDATA[created archive for expired, sold and closed ads, so users can view them even though it is not active]]></change>
+					<change><![CDATA[reworked Single ad page]]></change>
+					<change><![CDATA[added field for "short description"]]></change>
+					<change><![CDATA[created block for Random ads]]></change>
+					<change><![CDATA[created block for Random ads on Classifieds index]]></change>
+					<change><![CDATA[created block for Advertiser's ads on single ad page]]></change>
+					<change><![CDATA[reorganized ACP modules and added some more]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2010-10-02</date>
+				<rev-version>0.9.6</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[added purging cats]]></change>
+					<change><![CDATA[added move ads to chosen category, while deleting some other category]]></change>
+					<change><![CDATA[fixed some bugs]]></change>
+					<change><![CDATA[added purging cats]]></change>
+					<change><![CDATA[comments allowed from default]]></change>
+					<change><![CDATA[fixed background color for closed and sold ads]]></change>
+					<change><![CDATA[added managing user's ads via ACP]]></change>
+					<change><![CDATA[added setting to ACP if advertisers can disable comments]]></change>
+					<change><![CDATA[added block for Hot ads on Classified index]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2010-10-08</date>
+				<rev-version>0.9.7</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[completly rewriten new_ad.php and renamed to manage_ad.php]]></change>
+					<change><![CDATA[edited classifieds_ad_body.html and renamed to classifieds_manage_body.html]]></change>
+					<change><![CDATA[fixed bug with pagination while searching according the prefix]]></change>
+					<change><![CDATA[added purging of invisible ads via ACP (invisible ads are ads, which were created but not completed)]]></change>
+					<change><![CDATA[corrected mistakes in language]]></change>
+					<change><![CDATA[fixed displaying delete button only for people with permissions to delete]]></change>
+					<change><![CDATA[added user's location field to Classifieds index]]></change>
+					<change><![CDATA[added number posts, number ads and join date fields to single_ad.php]]></change>
+					<change><![CDATA[admin can allow users to set when their ad will expire and set the maximum and minimum days to choose]]></change>
+					<change><![CDATA[added permission for users to extend their own ads]]></change>
+					<change><![CDATA[removed posibility to show/hide recent ads on index via UCP]]></change>
+					<change><![CDATA[fixed bug in purging ads]]></change>
+					<change><![CDATA[delete all images from FTP and DB related to ads which were deleted or purged]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2010-10-16</date>
+				<rev-version>0.9.8</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[small template changes]]></change>
+					<change><![CDATA[deleted displaying (New ads X)]]></change>
+					<change><![CDATA[admin can set, whether people can trade only if they have filled their Location field]]></change>
+					<change><![CDATA[removed setting from ACP, which enable/disable reporting. now it is all based on permissions]]></change>
+					<change><![CDATA[reworked ACP settings]]></change>
+					<change><![CDATA[added settings to ACP - set Phone number field and Thumbnail field as mandatory]]></change>
+					<change><![CDATA[added RSS feeds for ads]]></change>
+					<change><![CDATA[reworked single ad page]]></change>
+					<change><![CDATA[added countdown to expiration date]]></change>
+					<change><![CDATA[reworked uploading pictures]]></change>
+					<change><![CDATA[created classified_header_include.html]]></change>
+					<change><![CDATA[new ACP module - Trading rules management - to manage 3 types of rules]]></change>
+					<change><![CDATA[added Default currency setting to ACP]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2010-10-22</date>
+				<rev-version>0.9.8.5</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[fixed edit link in single_ad.php]]></change>
+					<change><![CDATA[open rules for seller in a new window (if he has to agree with that)]]></change>
+					<change><![CDATA[fixed displaying big thumbnails]]></change>
+					<change><![CDATA[changed displaying other advertisers ads from recent to random]]></change>
+					<change><![CDATA[fixed missing lang variable for RSS]]></change>
+					<change><![CDATA[user have to agree with rules when editing]]></change>
+					<change><![CDATA[open terms in new window]]></change>
+					<change><![CDATA[new button images]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2010-11-10</date>
+				<rev-version>0.9.9</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[fixed small template bugs]]></change>
+					<change><![CDATA[added GPB to the list of currencies]]></change>
+					<change><![CDATA[fixed edit link]]></change>
+					<change><![CDATA[fixed problem with deleting ads which´s images had been deleted before]]></change>
+					<change><![CDATA[fixed problem with extending ads via ACP]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2011-04-22</date>
+				<rev-version>1.0.0</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[Classifieds MOD has been rewritten. It is more simple, faster and without bugs now. Here are some of the changes:]]></change>
+					<change><![CDATA[notifications about new Ad and expiration are sent onyl by email now (PM removed)]]></change>
+					<change><![CDATA[rewriten images upload script]]></change>
+					<change><![CDATA[new searching system (it searchs the therm in Ad Title, description and also short description now)]]></change>
+					<change><![CDATA[creating a new Ad has only one step now]]></change>
+					<change><![CDATA[fixed posting an empty comment]]></change>
+					<change><![CDATA[fixed displaying post time in comments]]></change>
+					<change><![CDATA[fixed displaying the email in Ad when poster has hiden it]]></change>
+					<change><![CDATA[fixed many other bugs]]></change>
+					<change><![CDATA[fixed SQL select in single_ad]]></change>
+					<change><![CDATA[code was reduced and loading is faster]]></change>
+					<change><![CDATA[price has to be a number]]></change>
+					<change><![CDATA[added ACP module - Prefixes management]]></change>
+					<change><![CDATA[added ACP module - Locations management]]></change>
+					<change><![CDATA[added extended search (by prefix, location, keywords, status, category, ordering)]]></change>
+					<change><![CDATA[added navigation links]]></change>
+					<change><![CDATA[added pagination for searching]]></change>
+					<change><![CDATA[added quick status change for all Ad to Sold, Closed or Active]]></change>
+					<change><![CDATA[added table of cca 40 currencies]]></change>
+					<change><![CDATA[added option to ACP to set max height and max width for images]]></change>
+					<change><![CDATA[renamed template files to have equeal name]]></change>
+					<change><![CDATA[removed displaying numbers of ads on index]]></change>
+					<change><![CDATA[removed classifieds from memberlist]]></change>
+					<change><![CDATA[removed JS Lightbox, PHP resizes the images now]]></change>
+					<change><![CDATA[removed classifieds from UCP]]></change>
+					<change><![CDATA[removed copyright from overall_footer.html]]></change>
+					<change><![CDATA[removed option that user can restrict comments in his ad]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2011-11-25</date>
+				<rev-version>1.1.0</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[[FEATURE] new image uploader]]></change>
+					<change><![CDATA[[FEATURE] possibility to remove uploaded images while editing an Ad]]></change>
+					<change><![CDATA[[FEATURE] lightbox to display big images]]></change>
+					<change><![CDATA[[FEATURE] last ads in user's profile]]></change>
+					<change><![CDATA[[FEATURE] currency management in ACP]]></change>
+					<change><![CDATA[[FEATURE] added custom bbcodes and smilies to comment form]]></change>
+					<change><![CDATA[[FEATURE] added option to set max filesize for uploaded images in ACP]]></change>
+					<change><![CDATA[[FEATURE] possibility to change the name of "buysell" directory via constants.php]]></change>
+					<change><![CDATA[[FIX] fixed many lang mistakes]]></change>
+					<change><![CDATA[[FIX] added 'IMG_BUTTON_POST_AD' and 'IMG_BUTTON_EXTEND_AD' to ACP lang files]]></change>
+					<change><![CDATA[[FIX] fixed classifieds statistics in Advertiser info on single_ad.php]]></change>
+					<change><![CDATA[[FIX] added category of the ad in navigation panel in single_ad.php]]></change>
+					<change><![CDATA[[FIX] all files saved in UNIX format now]]></change>
+					<change><![CDATA[[FIX] fixed wrong link to User's other ads in single_ad.php]]></change>
+					<change><![CDATA[[FIX] fixed comments pagination]]></change>
+					<change><![CDATA[[FIX] fixed missing links on thumbs]]></change>
+					<change><![CDATA[[CHANGE] removed validating thumb url from manage_ad.php]]></change>
+					<change><![CDATA[[CHANGE] removed UMIL from MOD package]]></change>
+					<change><![CDATA[[CHANGE] style of comments is same as posts]]></change>
+					<change><![CDATA[[CHANGE] simplified page for creating and editing ads]]></change>
+					<change><![CDATA[[CHANGE] simplified language]]></change>
+					<change><![CDATA[[CHANGE] automaticly add http protocol to thumb url if does not exist]]></change>
+					<change><![CDATA[[CHANGE] removed editing status in manage_ad.php]]></change>
+					<change><![CDATA[[CHANGE] improved displaying thumbnail on all pages]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2012-05-12</date>
+				<rev-version>1.2.0</rev-version>
+				<changelog lang="en">
+				  <change><![CDATA[[FIX] fixed bug "Users can extend ads which are not theirs"]]></change>
+				  <change><![CDATA[[FIX] fixed bug with wrong Ad statistics in single_ad.php]]></change>
+				  <change><![CDATA[[CHANGE] new Uploadify jQuery plugin]]></change>
+				  <change><![CDATA[[CHANGE] improved security of image uploading]]></change>
+					<change><![CDATA[[CHANGE] improved Countdown JS script]]></change>
+					<change><![CDATA[[CHANGE] display "Closed" or "Sold" in Countdown block]]></change>
+					<change><![CDATA[[CHANGE] new jQuery version]]></change>
+				</changelog>
+			</entry>
+			<entry>
+				<date>2013-11-12</date>
+				<rev-version>1.2.1</rev-version>
+				<changelog lang="en">
+					<change><![CDATA[added a new option to ACP - Limit number of uploaded images per one Ad]]></change>
+					<change><![CDATA[install instructions updated for phpBB 3.0.12]]></change>
+					<change><![CDATA[removed .htaccess files]]></change>
+				</changelog>
+			</entry>
+		</history>
+		<link-group>
+			<link type="contrib" href="contrib/upgrade_0_8_0_to_0_9_0.xml" lang="en">Upgrade from 0.8.0 to 0.9.0</link>
+			<link type="contrib" href="contrib/upgrade_0_9_0_to_0_9_1.xml" lang="en">Upgrade from 0.9.0 to 0.9.1</link>
+			<link type="contrib" href="contrib/upgrade_0_9_1_to_0_9_2.xml" lang="en">Upgrade from 0.9.1 to 0.9.2</link>
+			<link type="contrib" href="contrib/upgrade_0_9_2_to_0_9_3.xml" lang="en">Upgrade from 0.9.2 to 0.9.3</link>
+			<link type="contrib" href="contrib/upgrade_0_9_3_to_0_9_4.xml" lang="en">Upgrade from 0.9.3 to 0.9.4</link>
+			<link type="contrib" href="contrib/upgrade_0_9_4_to_0_9_5.xml" lang="en">Upgrade from 0.9.4 to 0.9.5</link>
+			<link type="contrib" href="contrib/upgrade_0_9_5_to_0_9_6.xml" lang="en">Upgrade from 0.9.5 to 0.9.6</link>
+			<link type="contrib" href="contrib/upgrade_0_9_6_to_0_9_7.xml" lang="en">Upgrade from 0.9.6 to 0.9.7</link>
+			<link type="contrib" href="contrib/upgrade_0_9_7_to_0_9_8.xml" lang="en">Upgrade from 0.9.7 to 0.9.8</link>
+			<link type="contrib" href="contrib/upgrade_0_9_8_to_0_9_8_5.xml" lang="en">Upgrade from 0.9.8 to 0.9.8.5</link>
+			<link type="contrib" href="contrib/upgrade_0_9_8_5_to_0_9_9.xml" lang="en">Upgrade from 0.9.8.5 to 0.9.9</link>
+			<link type="contrib" href="contrib/upgrade_0_9_9_to_1_0_0.xml" lang="en">Upgrade from 0.9.9 to 1.0.0</link>
+			<link type="contrib" href="contrib/upgrade_1_0_0_to_1_1_0.xml" lang="en">Upgrade from 1.0.0 to 1.1.0</link>
+			<link type="contrib" href="contrib/upgrade_1_1_0_to_1_2_0.xml" lang="en">Upgrade from 1.1.0 to 1.2.0</link>
+			<link type="contrib" href="contrib/upgrade_1_2_0_to_1_2_1.xml" lang="en">Upgrade from 1.2.0 to 1.2.1</link>
+		</link-group>
+	</header>
+	<action-group>
+		<copy>
+			<file from="root/*.*" to="/*.*"/>
+		</copy>
+		<open src="index.php">
+			<edit>
+				<find><![CDATA[// Assign index specific vars]]></find>
+				<action type="before-add"><![CDATA[// MOD :: CLASSIFIEDS MOD -- START
+if (isset($config['enable_classifieds']))
+{
+  if($config['enable_classifieds'] && $auth->acl_get('u_view_classifieds') && ( ($config['display_ads_on_index'] && $config['ad_num_display_on_index'] !='0') || ($config['display_rand_ads_on_index'] && $config['rand_ad_num_display_on_index'] !='0') ) )
+  {
+    include($phpbb_root_path . CL_DIRECTORY . '/includes/functions_buysell.' . $phpEx);
+    
+    $user->setup('mods/classified');
+  
+    if ($config['display_ads_on_index'])
+    {
+      display_recent_ads($config['ad_num_display_on_index']);
+  
+      $template->assign_vars(array(
+        'S_DISPLAY_ADS_ON_INDEX'	=> true,
+        'S_RECENT_ADS_TOP'	=> ($config['recent_ads_place']) ? true : false,
+      ));
+    }
+  
+    if ($config['display_rand_ads_on_index'] )
+    {
+      display_random_ads($config['rand_ad_num_display_on_index']);
+  
+      $template->assign_vars(array(
+        'S_DISPLAY_RAND_ADS_ON_INDEX'	=> true,
+        'S_RAND_ADS_TOP'	=> ($config['rand_ads_place']) ? true : false,
+      ));
+    }
+  }
+}
+// MOD :: CLASSIFIEDS MOD -- END]]></action>
+			</edit>
+		</open>
+		<open src="memberlist.php">
+			<edit>
+				<find><![CDATA[		else
+		{
+			$member['posts_in_queue'] = 0;
+		}]]></find>
+				<action type="after-add"><![CDATA[		// Last ads block
+		if ($config['display_profile_last_ads'] && $config['profile_num_last_ads'] != 0)
+		{
+				$user->setup('mods/classified');
+				include($phpbb_root_path . CL_DIRECTORY . '/includes/functions_buysell.' . $phpEx);
+				display_profile_ads($config['profile_num_last_ads'], $user_id);
+		}]]></action>
+			</edit>
+		</open>
+		<open src="adm/style/acp_profile.html">
+			<edit>
+				<find><![CDATA[		<dl>
+			<dt><label for="field_show_on_vt">{L_DISPLAY_ON_VT}:</label><br /><span>{L_DISPLAY_ON_VT_EXPLAIN}</span></dt>
+			<dd><input type="checkbox" class="radio" id="field_show_on_vt" name="field_show_on_vt" value="1"<!-- IF S_SHOW_ON_VT --> checked="checked"<!-- ENDIF --> /></dd>
+		</dl>]]></find>
+				<action type="after-add"><![CDATA[		<dl>
+			<dt><label for="field_show_on_vt">{L_DISPLAY_ON_CL}:</label><br /><span>{L_DISPLAY_ON_CL_EXPLAIN}</span></dt>
+			<dd><input type="checkbox" class="radio" id="field_show_on_cl" name="field_show_on_cl" value="1"<!-- IF S_SHOW_ON_CL --> checked="checked"<!-- ENDIF --> /></dd>
+		</dl>]]></action>
+			</edit>
+		</open>
+		<open src="includes/constants.php">
+			<edit>
+				<find><![CDATA[// Additional tables]]></find>
+				<action type="after-add"><![CDATA[// MOD :: CLASSIFIEDS MOD -- START
+define('ACTIVE', 0);
+define('SOLD', 1);
+define('CLOSED', 2);
+define('CL_DIRECTORY', 'buysell'); // after changing this you need to rename the directory and update all thumbnail urls in DB
+
+define('CLASSIFIEDS_TABLE',		$table_prefix . 'classifieds');
+define('CLASSIFIEDS_CATEGORY_TABLE',		$table_prefix . 'classifieds_categories');
+define('CLASSIFIEDS_COMMENTS_TABLE',		$table_prefix . 'classifieds_comments');
+define('CLASSIFIEDS_CAT_WATCH_TABLE',		$table_prefix . 'classifieds_cat_watch');
+define('CLASSIFIEDS_IMAGES_TABLE',		$table_prefix . 'classifieds_images');
+define('CLASSIFIEDS_RULES_TABLE',		$table_prefix . 'classifieds_rules');
+define('CLASSIFIEDS_CURRENCY_TABLE',		$table_prefix . 'classifieds_currency');
+define('CLASSIFIEDS_PREFIXES_TABLE',		$table_prefix . 'classifieds_prefixes');
+define('CLASSIFIEDS_LOCATIONS_TABLE',		$table_prefix . 'classifieds_locations');
+// MOD :: CLASSIFIEDS MOD -- END]]></action>
+			</edit>
+		</open>
+		<open src="includes/functions.php">
+			<edit>
+				<find><![CDATA['U_INDEX'				=> append_sid("{$phpbb_root_path}index.$phpEx"),]]></find>
+				<action type="after-add"><![CDATA['U_CLASSIFIEDS' =>  (isset($config['enable_classifieds'])) ? ($config['enable_classifieds']) ? append_sid("{$phpbb_root_path}".CL_DIRECTORY."/index.$phpEx") : '' : '',
+'U_CLASSIFIEDS_FEEDS' =>  (isset($config['enable_classifieds'])) ? ($config['enable_classifieds']) ? generate_board_url() . "/" . CL_DIRECTORY . "/feeds.$phpEx" : '' : '',]]></action>
+			</edit>
+		</open>
+		<open src="includes/acp/acp_language.php">
+			<edit>
+				<find><![CDATA['icon_back_top', 'icon_contact_aim', 'icon_contact_email', 'icon_contact_icq', 'icon_contact_jabber', 'icon_contact_msnm', 'icon_contact_pm', 'icon_contact_yahoo', 'icon_contact_www', 'icon_post_delete', 'icon_post_edit', 'icon_post_info', 'icon_post_quote', 'icon_post_report', 'icon_user_online', 'icon_user_offline', 'icon_user_profile', 'icon_user_search', 'icon_user_warn', 'button_pm_forward', 'button_pm_new', 'button_pm_reply', 'button_topic_locked', 'button_topic_new', 'button_topic_reply',]]></find>
+				<inline-edit>
+					<inline-find><![CDATA['button_topic_reply',]]></inline-find>
+					<inline-action type="after-add"><![CDATA[ 'button_post_ad', 'button_extend_ad',]]></inline-action>
+				</inline-edit>
+			</edit>
+		</open>
+		<open src="includes/acp/acp_profile.php">
+			<edit>
+				<find><![CDATA['field_show_on_vt'	=> 0,]]></find>
+				<action type="after-add"><![CDATA['field_show_on_cl'	=> 0,]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[1	=> array('field_ident', 'lang_name', 'lang_explain', 'field_option_none', 'field_show_on_reg', 'field_show_on_vt', 'field_required', 'field_show_novalue', 'field_hide', 'field_show_profile', 'field_no_view'),]]></find>
+				<inline-edit>
+					<inline-find><![CDATA['field_show_on_vt',]]></inline-find>
+					<inline-action type="after-add"><![CDATA[ 'field_show_on_cl', ]]></inline-action>
+				</inline-edit>
+			</edit>
+			<edit>
+				<find><![CDATA[$visibility_ary = array(]]></find>
+				<action type="after-add"><![CDATA['field_show_on_cl',]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA['S_SHOW_ON_VT'		=> ($cp->vars['field_show_on_vt']) ? true : false,]]></find>
+				<action type="after-add"><![CDATA['S_SHOW_ON_CL'		=> ($cp->vars['field_show_on_cl']) ? true : false,]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA['field_show_on_vt'		=> $cp->vars['field_show_on_vt'],]]></find>
+				<action type="after-add"><![CDATA['field_show_on_cl'		=> $cp->vars['field_show_on_cl'],]]></action>
+			</edit>
+		</open>
+		<open src="includes/acp/acp_styles.php">
+			<edit>
+				<find><![CDATA['icon_back_top', 'icon_contact_aim', 'icon_contact_email', 'icon_contact_icq', 'icon_contact_jabber', 'icon_contact_msnm', 'icon_contact_pm', 'icon_contact_yahoo', 'icon_contact_www', 'icon_post_delete', 'icon_post_edit', 'icon_post_info', 'icon_post_quote', 'icon_post_report', 'icon_user_online', 'icon_user_offline', 'icon_user_profile', 'icon_user_search', 'icon_user_warn', 'button_pm_forward', 'button_pm_new', 'button_pm_reply', 'button_topic_locked', 'button_topic_new', 'button_topic_reply',]]></find>
+				<inline-edit>
+					<inline-find><![CDATA['button_topic_reply',]]></inline-find>
+					<inline-action type="after-add"><![CDATA[ 'button_extend_ad', 'button_post_ad',]]></inline-action>
+				</inline-edit>
+			</edit>
+		</open>
+		<open src="language/en/common.php">
+			<edit>
+				<find><![CDATA['USER_LANG'			=> 'en-gb',]]></find>
+				<action type="after-add"><![CDATA[// MOD :: CLASSIFIEDS MOD -- START
+'CLASSIFIEDS'		=> 'Classifieds',
+'RECENT_ADS'		=> 'Recent advertisements',
+'RANDOM_ADS'		=> 'Random advertisements',
+// MOD :: CLASSIFIEDS MOD -- END]]></action>
+			</edit>
+		</open>
+		<open src="language/en/acp/permissions_phpbb.php">
+			<edit>
+				<find><![CDATA['actions'		=> 'Actions',]]></find>
+				<action type="after-add"><![CDATA['classifieds'	=>	'Classifieds',]]></action>
+			</edit>
+		</open>
+		<open src="styles/prosilver/imageset/en/imageset.cfg">
+			<edit>
+				<find><![CDATA[img_button_topic_reply = button_topic_reply.gif*25*96]]></find>
+				<action type="after-add"><![CDATA[img_button_post_ad = button_post_ad.gif*25*96
+img_button_extend_ad = button_extend_ad.gif*16*55]]></action>
+			</edit>
+		</open>
+		<open src="styles/prosilver/template/index_body.html">
+			<edit>
+				<find><![CDATA[<!-- IF U_MCP --><p>{CURRENT_TIME} <br />[&nbsp;<a href="{U_MCP}">{L_MCP}</a>&nbsp;]</p><!-- ELSEIF S_USER_LOGGED_IN --><p>{CURRENT_TIME}</p><!-- ENDIF -->]]></find>
+				<action type="after-add"><![CDATA[<!-- IF S_DISPLAY_ADS_ON_INDEX and S_RECENT_ADS_TOP -->
+  <!-- INCLUDE classifieds_recent_ads_block.html -->
+<!-- ENDIF -->
+
+<!-- IF S_DISPLAY_RAND_ADS_ON_INDEX and S_RAND_ADS_TOP -->
+  <!-- INCLUDE classifieds_random_ads_block.html -->
+<!-- ENDIF -->]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[<!-- INCLUDE forumlist_body.html -->]]></find>
+				<action type="after-add"><![CDATA[<!-- IF S_DISPLAY_ADS_ON_INDEX and not S_RECENT_ADS_TOP -->
+  <!-- INCLUDE classifieds_recent_ads_block.html -->
+<!-- ENDIF -->
+
+<!-- IF S_DISPLAY_RAND_ADS_ON_INDEX and not S_RAND_ADS_TOP -->
+  <!-- INCLUDE classifieds_random_ads_block.html -->
+<!-- ENDIF -->]]></action>
+			</edit>
+		</open>
+		<open src="styles/prosilver/template/memberlist_view.html">
+			<edit>
+				<find><![CDATA[</form>]]></find>
+				<action type="before-add"><![CDATA[<!-- INCLUDE classifieds_profile_ads_block.html -->]]></action>
+			</edit>
+		</open>
+		<open src="styles/prosilver/template/overall_header.html">
+			<edit>
+				<find><![CDATA[</head>]]></find>
+				<action type="before-add"><![CDATA[<!-- INCLUDE classifieds_header_include.html -->]]></action>
+			</edit>
+			<edit>
+				<find><![CDATA[<li class="icon-faq"><a href="{U_FAQ}" title="{L_FAQ_EXPLAIN}">{L_FAQ}</a></li>]]></find>
+				<action type="before-add"><![CDATA[<!-- IF U_CLASSIFIEDS --><li><img src="{T_THEME_PATH}/images/cart.png" style="vertical-align:middle;" /><a href="{U_CLASSIFIEDS}" title="{L_CLASSIFIEDS}">{L_CLASSIFIEDS}</a></li><!-- ENDIF -->]]></action>
+			</edit>
+		</open>
+		<open src="styles/prosilver/theme/stylesheet.css">
+			<edit>
+				<find><![CDATA[@import url("colours.css");]]></find>
+				<action type="after-add"><![CDATA[@import url("classifieds.css");]]></action>
+			</edit>
+		</open>
+		<php-installer><![CDATA[classifieds_install.php]]></php-installer>
+		<diy-instructions lang="en"><![CDATA[After doing the edits browse to http://www.yoursite.com/classifieds_install.php
+After running the installation remove installation file from your FTP. Then set the user and moderation permissions, refresh the template, skin and imageset and purge the cache.
+If you want to allow uploading images, please set the CHMOD for buysell/images and buysell/images/thumb to 755 .]]></diy-instructions>
+	</action-group>
+</mod>

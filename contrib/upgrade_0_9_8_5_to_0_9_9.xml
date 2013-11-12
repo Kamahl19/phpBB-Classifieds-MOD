@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?xml-stylesheet type="text/xsl" href="modx.prosilver.en.xsl"?>
+<!--NOTICE: Please open this file in your web browser. If presented with a security warning, you may safely tell it to allow the blocked content.-->
+<!--For security purposes, please check: http://www.phpbb.com/mods/ for the latest version of this MOD.\nAlthough MODs are checked before being allowed in the MODs Database there is no guarantee that there are no security problems within the MOD.\nNo support will be given for MODs not found within the MODs Database which can be found at http://www.phpbb.com/mods/-->
+<mod xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.phpbb.com/mods/xml/modx-1.2.5.xsd">
+	<header>
+		<meta name="generator" content="MODX file generated with PP MODX Creator by tumba25 (online version)"/>
+		<license><![CDATA[http://opensource.org/licenses/gpl-license.php GNU General Public License v2]]></license>
+		<title lang="en"><![CDATA[Classifieds mod]]></title>
+		<description lang="en"><![CDATA[Upgrade instructions to upgrade Classifieds MOD from 0.9.8.5 to 0.9.9]]></description>
+		<author-notes lang="en"><![CDATA[Upgrading from 0.9.8.5 to 0.9.9 the new versions includes:
+1. Copy and rewrite all included files
+2. Do all the file changes in this file if there are some
+3. Run classifieds_install.php
+4. Purge the cache, refresh your template, skin and imageset via ACP - Styles]]></author-notes>
+		<author-group>
+			<author>
+				<realname><![CDATA[Martin]]></realname>
+				<username><![CDATA[Kamahl19]]></username>
+				<homepage><![CDATA[www.phpbb3hacks.com]]></homepage>
+				<email><![CDATA[kamahl19@gmail.com]]></email>
+			</author>
+		</author-group>
+		<mod-version>0.9.9</mod-version>
+		<installation>
+			<level>easy</level>
+			<time>300</time>
+			<target-version>3.0.7-PL1</target-version>
+		</installation>
+	</header>
+	<action-group>
+  	<copy>
+			<file from="root/adm/style/acp_classifieds.html" to="adm/style/acp_classifieds.html"/>
+			<file from="root/adm/style/acp_classifieds_bbcodes.html" to="adm/style/acp_classifieds_bbcodes.html"/>
+			<file from="root/adm/style/acp_classifieds_blocks.html" to="adm/style/acp_classifieds_blocks.html"/>
+			<file from="root/adm/style/acp_classifieds_cats.html" to="adm/style/acp_classifieds_cats.html"/>
+			<file from="root/adm/style/acp_classifieds_manage.html" to="adm/style/acp_classifieds_manage.html"/>
+			<file from="root/adm/style/acp_classifieds_purge.html" to="adm/style/acp_classifieds_purge.html"/>
+			<file from="root/adm/style/acp_classifieds_rules.html" to="adm/style/acp_classifieds_rules.html"/>
+			<file from="root/buysell/ajaxupload.php" to="buysell/ajaxupload.php"/>
+			<file from="root/buysell/feeds.php" to="buysell/feeds.php"/>
+			<file from="root/buysell/index.php" to="buysell/index.php"/>
+			<file from="root/buysell/manage_ad.php" to="buysell/manage_ad.php"/>
+			<file from="root/buysell/rules.php" to="buysell/rules.php"/>
+			<file from="root/buysell/single_ad.php" to="buysell/single_ad.php"/>
+			<file from="root/buysell/images/bg.jpg" to="buysell/images/bg.jpg"/>
+			<file from="root/buysell/images/error.gif" to="buysell/images/error.gif"/>
+			<file from="root/buysell/images/index.html" to="buysell/images/index.html"/>
+			<file from="root/buysell/images/loader_light_blue.gif" to="buysell/images/loader_light_blue.gif"/>
+			<file from="root/buysell/images/noimage.gif" to="buysell/images/noimage.gif"/>
+			<file from="root/buysell/images/success.gif" to="buysell/images/success.gif"/>
+			<file from="root/buysell/includes/class_comment.php" to="buysell/includes/class_comment.php"/>
+			<file from="root/buysell/includes/functions_buysell.php" to="buysell/includes/functions_buysell.php"/>
+			<file from="root/buysell/js/ajaxupload.js" to="buysell/js/ajaxupload.js"/>
+			<file from="root/buysell/js/countdown.js" to="buysell/js/countdown.js"/>
+			<file from="root/buysell/lightbox/css/lightbox.css" to="buysell/lightbox/css/lightbox.css"/>
+			<file from="root/buysell/lightbox/images/bullet.gif" to="buysell/lightbox/images/bullet.gif"/>
+			<file from="root/buysell/lightbox/images/close.gif" to="buysell/lightbox/images/close.gif"/>
+			<file from="root/buysell/lightbox/images/closelabel.gif" to="buysell/lightbox/images/closelabel.gif"/>
+			<file from="root/buysell/lightbox/images/loading.gif" to="buysell/lightbox/images/loading.gif"/>
+			<file from="root/buysell/lightbox/images/nextlabel.gif" to="buysell/lightbox/images/nextlabel.gif"/>
+			<file from="root/buysell/lightbox/images/prevlabel.gif" to="buysell/lightbox/images/prevlabel.gif"/>
+			<file from="root/buysell/lightbox/js/builder.js" to="buysell/lightbox/js/builder.js"/>
+			<file from="root/buysell/lightbox/js/effects.js" to="buysell/lightbox/js/effects.js"/>
+			<file from="root/buysell/lightbox/js/lightbox.js" to="buysell/lightbox/js/lightbox.js"/>
+			<file from="root/buysell/lightbox/js/prototype.js" to="buysell/lightbox/js/prototype.js"/>
+			<file from="root/buysell/lightbox/js/scriptaculous.js" to="buysell/lightbox/js/scriptaculous.js"/>
+			<file from="root/includes/acp/acp_classifieds.php" to="includes/acp/acp_classifieds.php"/>
+			<file from="root/includes/acp/info/acp_classifieds.php" to="includes/acp/info/acp_classifieds.php"/>
+			<file from="root/language/en/email/ad_expired.txt" to="language/en/email/ad_expired.txt"/>
+			<file from="root/language/en/email/ad_expired_user_extend.txt" to="language/en/email/ad_expired_user_extend.txt"/>
+			<file from="root/language/en/email/classifieds_comment.txt" to="language/en/email/classifieds_comment.txt"/>
+			<file from="root/language/en/email/new_ad.txt" to="language/en/email/new_ad.txt"/>
+			<file from="root/language/en/email/notify_classified.txt" to="language/en/email/notify_classified.txt"/>
+			<file from="root/language/en/mods/classified.php" to="language/en/mods/classified.php"/>
+			<file from="root/language/en/mods/info_acp_classifieds.php" to="language/en/mods/info_acp_classifieds.php"/>
+			<file from="root/language/en/mods/permissions_classified.php" to="language/en/mods/permissions_classified.php"/>
+			<file from="root/styles/prosilver/imageset/en/button_extend_ad.gif" to="styles/prosilver/imageset/en/button_extend_ad.gif"/>
+			<file from="root/styles/prosilver/imageset/en/button_post_ad.gif" to="styles/prosilver/imageset/en/button_post_ad.gif"/>
+			<file from="root/styles/prosilver/template/classified_header_include.html" to="styles/prosilver/template/classified_header_include.html"/>
+			<file from="root/styles/prosilver/template/classified_manage_body.html" to="styles/prosilver/template/classified_manage_body.html"/>
+			<file from="root/styles/prosilver/template/classified_index_body.html" to="styles/prosilver/template/classified_index_body.html"/>
+			<file from="root/styles/prosilver/template/classified_rules_body.html" to="styles/prosilver/template/classified_rules_body.html"/>
+			<file from="root/styles/prosilver/template/classified_single_body.html" to="styles/prosilver/template/classified_single_body.html"/>
+			<file from="root/styles/prosilver/template/classifieds_random_ads_block.html" to="styles/prosilver/template/classifieds_random_ads_block.html"/>
+			<file from="root/styles/prosilver/template/classifieds_recent_ads_block.html" to="styles/prosilver/template/classifieds_recent_ads_block.html"/>
+			<file from="root/styles/prosilver/theme/images/cart.png" to="styles/prosilver/theme/images/cart.png"/>
+			<file from="root/styles/prosilver/theme/images/watch.gif" to="styles/prosilver/theme/images/watch.gif"/>
+      <file from="root/styles/prosilver/theme/classifieds.css" to="styles/prosilver/theme/classifieds.css"/>
+      <file from="root/umil/*.*" to="umil/*.*"/>
+			<file from="root/classifieds_install.php" to="classifieds_install.php"/>
+		</copy>
+		
+		<open src="memberlist.php">
+			<edit>
+				<find><![CDATA[			// MOD :: CLASSIFIEDS MOD -- START
+			'S_ENABLE_CLASSIFIEDS'    => $config['enable_classifieds'],
+			'USER_ADVERTISEMENTS' => user_total_ads($user_id, 'memberlist'),
+			// MOD :: CLASSIFIEDS MOD -- END]]></find>
+				<action type="replace-with"><![CDATA[		// MOD :: CLASSIFIEDS MOD -- START
+		include($phpbb_root_path . 'buysell/includes/functions_buysell.' . $phpEx);
+		// MOD :: CLASSIFIEDS MOD -- END]]></action>
+			</edit>
+		</open>
+		
+		<open src="includes/functions.php">
+			<edit>
+				<find><![CDATA['U_CLASSIFIEDS'   => ($config['enable_classifieds']) ? append_sid("{$phpbb_root_path}buysell/index.$phpEx") : '',
+'U_CLASSIFIEDS_FEEDS'			=> ($config['enable_classifieds']) ? generate_board_url() . "/buysell/feeds.$phpEx" : '',]]></find>
+				<action type="replace-with"><![CDATA['U_CLASSIFIEDS'   => (@$config['enable_classifieds']) ? append_sid("{$phpbb_root_path}buysell/index.$phpEx") : '',
+'U_CLASSIFIEDS_FEEDS'			=> (@$config['enable_classifieds']) ? generate_board_url() . "/buysell/feeds.$phpEx" : '',]]></action>
+			</edit>
+		</open>
+		
+	<php-installer>classifieds_install.php</php-installer>
+  <diy-instructions lang="en"><![CDATA[After doing the edits browse to http://www.yoursite.com/classifieds_install.php
+After running the updating script remove installation file from your FTP. Then set the user and moderation permissions, refresh the template, skin and imageset and purge the cache.
+If you want to allow uploading images, please set the CHMOD for buysell/images to 777 .]]></diy-instructions>
+	</action-group>
+</mod>

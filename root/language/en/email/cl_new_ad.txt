@@ -1,0 +1,12 @@
+Subject: "You have posted an advertisement on {SITE_NAME}"
+
+Hello {USERNAME},
+
+You have just posted an advertisement on {SITE_NAME} with the title {TITLE}.
+
+Your advertisement will expire on {EXPIRE_DATE}.
+
+If your advertisement has expired without being sold please contact the board Administrator to revive it or do it yourself if you can.
+If your advertisement has been sold before being expired please edit the ad and mark it "closed" or "sold".
+
+{EMAIL_SIG}

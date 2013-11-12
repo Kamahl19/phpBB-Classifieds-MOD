@@ -1,0 +1,110 @@
+<!-- INCLUDE overall_header.html -->
+
+	<div id="ad_list">
+  	<!-- BEGIN rules -->
+  	  <!-- IF rules.S_RULES_DISPLAY -->
+  			<div class="panel bg2" style="font-size: 11px;">
+  				<div class="inner"><span class="corners-top"><span></span></span>
+  					<h3>{rules.S_RULES_TITLE}</h3>
+  		    	{rules.S_RULES_TEXT}
+  				<span class="corners-bottom"><span></span></span></div>
+  			</div>
+  	  <!-- ELSE -->
+  	     <div class="panel bg2" style="font-size: 11px;">
+  				<div class="inner"><span class="corners-top"><span></span></span>
+  					{L_CL_NO_RULES}
+  				<span class="corners-bottom"><span></span></span></div>
+  			</div>
+  		<!-- ENDIF -->
+  	<!-- END rules -->
+	</div>
+
+	<div id="classifieds_sidebar">
+
+		<div class="panel bg2">
+			<div class="inner"><span class="corners-top"><span></span></span>
+				<h3>{L_CL_CATEGORIES}</h3>
+				<ul class="topiclist">
+					{CATEGORIES}
+				</ul>
+    	<span class="corners-bottom"><span></span></span></div>
+		</div>
+
+		<!-- IF not S_IS_BOT and U_CLASSIFIEDS_RSS -->
+			<div class="panel bg2">
+			  <div class="inner"><span class="corners-top"><span></span></span>
+			  	<h3>{L_CL_RSS}</h3>
+					<img src="{T_THEME_PATH}/images/feed.gif" width="16" height="16" border="0" style="vertical-align: middle;" alt="{L_CL_CLASSIFIEDS_FEEDS}" /> <a href="{U_CLASSIFIEDS_RSS}" title="{L_CL_CLASSIFIEDS_FEEDS}">{L_CL_CLASSIFIEDS_RSS}</a>
+        <span class="corners-bottom"><span></span></span></div>
+			</div>
+		<!-- ENDIF -->
+
+    <!-- IF S_USER_LOGGED_IN -->
+	    <div class="panel bg2">
+				<div class="inner"><span class="corners-top"><span></span></span>
+					<h3>{L_CL_USER_CONTROLS}</h3>
+					<ul class="topiclist">
+						<li class="header"><strong>{L_CL_MY_ADS}</strong></li>
+						{USER_AD_STATS}
+					</ul>
+	      <span class="corners-bottom"><span></span></span></div>
+			</div>
+    <!-- ENDIF -->
+
+    <div class="panel bg2" id="classifieds_search">
+			<div class="inner"><span class="corners-top"><span></span></span>
+			  <h3>{L_SEARCH}</h3>
+			  
+			  <form method="post" action="{U_SEARCH_ADS}">
+			  
+					<input name="stext" type="text" class="inputbox search_input" value="{STEXT}" style="font-size: 11px;" />
+					
+					<select name="scategory" class="search_input" style="font-size: 11px;">
+         		<option value="" selected="selected">{L_CL_SCHOOSE_CATEGORY}..</option>
+   					<!-- BEGIN cat -->
+							<option value="{cat.ID}"<!-- IF cat.PARENT --> class="is_parent" disabled="disabled"<!-- ELSEIF cat.ID == SCATEGORY --> selected="selected"<!-- ENDIF -->>{cat.NAME}</option>
+						<!-- END cat -->
+					</select>
+					
+					<!-- IF .locations -->
+  					<select name="slocation" class="search_input"  style="font-size: 11px;">
+    					<option value="" selected="selected">{L_CL_CHOOSE_LOCATION}..</option>
+  					  <!-- BEGIN locations -->
+      				  <option value="{locations.ID}"<!-- IF locations.ID == SLOCATION --> selected="selected"<!-- ENDIF -->>{locations.NAME}</option>
+      				<!-- END locations -->
+  					</select>
+					<!-- ENDIF -->
+					
+					<!-- IF .prefixes -->
+					  <select name="sprefix" class="search_input"  style="font-size: 11px;">
+    					<option value="" selected="selected">{L_CL_CHOOSE_PREFIX}..</option>
+  					  <!-- BEGIN prefixes -->
+      				  <option value="{prefixes.ID}"<!-- IF prefixes.ID == SPREFIX --> selected="selected"<!-- ENDIF -->>{prefixes.L_SEARCH_BY_PREFIX}</option>
+      				<!-- END prefixes -->
+  					</select>
+  				<!-- ENDIF -->        
+  				
+					<select name="sorder" class="search_input"  style="font-size: 11px;">
+  					<option value="time" selected="selected">{L_CL_ORDER_TIME}</option>
+  					<option value="price"<!-- IF SORDER == 'price' --> selected="selected"<!-- ENDIF -->>{L_CL_ORDER_PRICE}</option>
+            <option value="views"<!-- IF SORDER == 'views' --> selected="selected"<!-- ENDIF -->>{L_CL_ORDER_VIEWS}</option>
+					</select>
+					
+					<select name="sordertype" class="search_input"  style="font-size: 11px;">
+  					<option value="desc" selected="selected">{L_CL_ORDER_DESCENDING}</option>
+  					<option value="asc"<!-- IF SORDERTYPE == 'asc' --> selected="selected"<!-- ENDIF -->>{L_CL_ORDER_ASCENDING}</option>
+					</select>
+					
+					<br /><label>{L_CL_SEARCH_ONLY_ACTIVE} <input type="checkbox" name="sactive" value="1" <!-- IF SACTIVE != '0' -->checked="checked"<!-- ENDIF --> /></label><br />
+
+					<input class="button1" type="submit" id="submit" name="search" value="{L_SEARCH}" />
+				</form>
+			  
+			<span class="corners-bottom"><span></span></span></div>
+		</div>
+		
+	</div>
+	
+<div class="classifieds_copyright">{L_CL_CLASSIFIEDS_COPYRIGHT}</div>
+
+<!-- INCLUDE overall_footer.html -->

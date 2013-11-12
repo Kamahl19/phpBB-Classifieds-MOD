@@ -1,0 +1,95 @@
+<!-- INCLUDE overall_header.html -->
+<script type="text/javascript">
+// <![CDATA[
+	function display(action, id)
+	{
+		if (action == 'show')
+		{
+			document.getElementById("actions"+id).style.display = "block";
+			document.getElementById("link"+id).href= "javascript:display('hide', "+id+")";
+		}
+
+		if (action == 'hide')
+		{
+			document.getElementById("actions"+id).style.display = "none";
+			document.getElementById("link"+id).href= "javascript:display('show', "+id+")";
+		}
+	}
+// ]]>
+</script>
+
+<h1>{L_ACP_CLASSIFIEDS}</h1>
+
+<fieldset>
+	<legend>{L_ACP_CLASSIFIEDS_MANAGE_TITLE}</legend>
+
+	<!-- IF STATUS == 'active' -->
+  <h1>{L_ACTIVE_ADS}</h1>
+  <!-- ELSEIF STATUS == 'closed' -->
+  <h1>{L_CLOSED_ADS}</h1>
+  <!-- ELSEIF STATUS == 'sold' -->
+  <h1>{L_SOLD_ADS}</h1>
+  <!-- ELSEIF STATUS == 'expired' -->
+  <h1>{L_EXPIRED_ADS}</h1>
+  <!-- ELSEIF STATUS == 'viewuser' -->
+  <h1>{USERS_ADS}</h1>
+  <!-- ENDIF -->
+
+  <!-- IF STATUS != '' -->
+  	<!-- IF .ad -->
+  	  <!-- IF STATUS == 'expired' --><p>{L_EXPIRED_ADS_EXPLAIN}</p><!-- ENDIF -->
+
+				<table cellpadding="1" cellspacing="1">
+					<th width="40%">{L_TITLE}</th>
+					<th width="20%">{L_USERNAME}</th>
+					<th width="30%">{L_DATE}</th>
+					<th width="10%">{L_OPTIONS}</th>
+					<!-- BEGIN ad -->
+						<tr>
+						  <!-- IF STATUS != 'expired' -->
+								<td width="40%"><a href="{ad.AD_LINK}" target="_blank">{ad.AD_TITLE}</a> {L_IN} {ad.AD_CATEGORY}</td>
+								<td width="20%"><!-- IF ad.AD_POSTER_COLOR --><span style="color:#{ad.AD_POSTER_COLOR}"><!-- ELSE --><span><!-- ENDIF -->{ad.AD_POSTER}</span></td>
+								<td width="30%"><b>{L_POST_DATE}:</b> {ad.AD_DATE}<br />
+									<b>{L_EXPIRE_DATE}:</b> {ad.AD_EXPIRE}
+								</td>
+								<td id="category" style="text-align:center;" bgcolor="#DCEBFE" width="10%" ><a href="{ad.DELETE_LINK}">{ICON_DELETE}</a></td>
+	            <!-- ELSEIF STATUS == 'expired' -->
+	              <td <!-- IF ad.AD_STATUS == 1 or ad.AD_STATUS == 2 -->bgcolor="#E59090"<!-- ENDIF --> width="40%"><a href="{ad.AD_LINK}" target="_blank">{ad.AD_TITLE}</a> {L_IN} {ad.AD_CATEGORY}</td>
+								<td <!-- IF ad.AD_STATUS == 1 or ad.AD_STATUS == 2 -->bgcolor="#E59090"<!-- ENDIF --> width="20%"><!-- IF ad.AD_POSTER_COLOR --><span style="color:#{ad.AD_POSTER_COLOR}"><!-- ELSE --><span><!-- ENDIF -->{ad.AD_POSTER}</span></td>
+								<td <!-- IF ad.AD_STATUS == 1 or ad.AD_STATUS == 2 -->bgcolor="#E59090"<!-- ENDIF --> width="30%"><b>{L_POST_DATE}:</b> {ad.AD_DATE}<br />
+									<b>{L_EXPIRE_DATE}:</b> {ad.AD_EXPIRE}
+         					<div id="actions{ad.AD_ID}" style="display:none; text-align:center">
+										<form method="post" action="{ad.EDIT_EXPIRE}">
+											<input type="text" size="3" id="add_days" name="add_days" />
+											<input type="submit" id="submit" value="{L_SUBMIT}" class="button1" name="submit" />
+										</form>
+										<br />
+										<p>{L_SET_DAYS}</p>
+									</div>
+								</td>
+								<td id="category" style="text-align:center" bgcolor="#DCEBFE" width="10%" >
+									<a id="link{ad.AD_ID}" href="javascript:display('show', {ad.AD_ID})"><img id="show_ad_{ad.AD_ID}" src="images/icon_edit.gif" alt="edit" /></a>
+									<a href="{ad.DELETE_LINK}">{ICON_DELETE}</a>
+								</td>
+							<!-- ENDIF -->
+						</tr>
+					<!-- END ad -->
+				</table>
+
+			<ul class="linklist" style="list-style:none;">
+			  <li class="rightside pagination">{TOTAL_ADS}<!-- IF PAGINATION -->&nbsp; &bull; &nbsp;<a href="#" onclick="jumpto(); return false;" title="{L_JUMP_TO_PAGE}">{PAGE_NUMBER}</a> <span>{PAGINATION}</span><!-- ELSE -->&nbsp; &bull; &nbsp;{PAGE_NUMBER}<!-- ENDIF --></li>
+			</ul>
+
+		<!-- ELSE -->
+		  <p>{L_NO_ADS}</p>
+		<!-- ENDIF -->
+  <!-- ENDIF -->
+
+  <!-- IF STATUS != 'active' --><h2 style="margin: 12px 0;"><a href="{VIEW_ALL_ACTIVE}">{L_VIEW_ALL} {L_ACTIVE_ADS}</a></h2><!-- ENDIF -->
+	<!-- IF STATUS != 'closed' --><h2 style="margin: 12px 0;"><a href="{VIEW_ALL_CLOSED}">{L_VIEW_ALL} {L_CLOSED_ADS}</a></h2><!-- ENDIF -->
+	<!-- IF STATUS != 'sold' --><h2 style="margin: 12px 0;"><a href="{VIEW_ALL_SOLD}">{L_VIEW_ALL} {L_SOLD_ADS}</a></h2><!-- ENDIF -->
+	<!-- IF STATUS != 'expired' --><h2 style="margin: 12px 0;"><a href="{VIEW_ALL_EXPIRED}">{L_VIEW_ALL} {L_EXPIRED_ADS}</a></h2><!-- ENDIF -->
+
+</fieldset>
+
+<!-- INCLUDE overall_footer.html -->

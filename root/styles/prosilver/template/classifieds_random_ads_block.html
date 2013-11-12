@@ -1,0 +1,40 @@
+<!-- IF .rand_ad -->
+	<div class="forabg">
+		<div class="inner"><span class="corners-top"><span></span></span>
+
+			<ul class="topiclist">
+				<li class="header">
+					<dl>
+						<dd><strong>{L_RANDOM_ADS}</strong></dd>
+					</dl>
+				</li>
+			</ul>
+
+	    <ul class="topiclist forums">
+	      <!-- BEGIN rand_ad -->
+					<li class="row bg2 classifieds_block" <!-- IF rand_ad.S_LAST_ROW and rand_ad.S_ROW_COUNT is even -->style="width:100%;"<!-- ENDIF -->>
+						<dl>
+	      			<dd>
+	      			  <div style="width: 50px; height: 50px; float: left; padding: 0 5px;">
+                  <a href="{rand_ad.AD_LINK}" style="display: inline-block;">
+                    <!-- IF rand_ad.THUMB -->
+  										<span style="display: inline-block; background: url('{rand_ad.THUMB}') no-repeat 50% 50%; width: 50px; height: 50px;"></span>
+  		              <!-- ELSE -->
+  		                <span style="display: inline-block; background: url('{T_THEME_PATH}/images/noimage.gif') no-repeat 50% 50%; width: 50px; height: 50px;"></span>
+  									<!-- ENDIF -->
+                  </a>
+  							</div>
+								<div class="cl_desc">
+									<a href="{rand_ad.AD_LINK}"><b>{rand_ad.AD_TITLE}</b></a><br />
+	        				{L_CL_IN_CAT} <b>{rand_ad.CATEGORY}</b><br />
+									<b>{L_CL_PRICE}</b>: {rand_ad.AD_PRICE}	<i>{L_POST_BY_AUTHOR}</i> {rand_ad.AD_POSTER}
+	            	</div>
+							</dd>
+						</dl>
+					</li>
+				<!-- END rand_ad -->
+	    </ul>
+
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+<!-- ENDIF -->

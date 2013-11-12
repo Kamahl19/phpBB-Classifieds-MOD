@@ -1,0 +1,77 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{L_ACP_CLASSIFIEDS}</h1>         
+
+<form method="post" action="{U_ACTION}">
+	<fieldset>
+		<legend>{L_LOCATION_SETTINGS}</legend>
+		
+		<dl>
+			<dt><label for="mandatory_ad_location">{L_MANDATORY_AD_LOCATION}</label><br />{L_MANDATORY_AD_LOCATION_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="mandatory_ad_location" id="mandatory_ad_location" value="1" <!-- IF MANDATORY_AD_LOCATION -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="mandatory_ad_location" id="mandatory_ad_location" value="0" <!-- IF not MANDATORY_AD_LOCATION -->checked="checked"<!-- ENDIF --> /> {L_NO}
+			</dd>
+		</dl>
+		
+		<dl>
+			<dt><label for="required_posts_to_view">{L_FILL_LOCATION_TO_TRADE}</label><br />{L_FILL_LOCATION_TO_TRADE_EXPLAIN}</dt>
+  		<dd>
+				<input type="radio" class="radio" name="fill_location_to_trade" id="fill_location_to_trade" value="1" <!-- IF FILL_LOCATION_TO_TRADE -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="fill_location_to_trade" id="fill_location_to_trade" value="0" <!-- IF not FILL_LOCATION_TO_TRADE -->checked="checked"<!-- ENDIF --> /> {L_NO}
+			</dd>
+		</dl>
+		
+	</fieldset>
+	
+	<p class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+	</p>
+</form>
+
+	
+<form method="post" action="{U_ADD_LOCATION}">
+	<fieldset>
+		<legend>{L_ADD_LOCATION}</legend>
+
+		<dl>
+			<dt><label for="location_name">{L_LOCATION_NAME}</label><br /><span>{L_LOC_ON_NEW_LINE}</span></dt>
+			<dd><textarea name="location_name" cols="40" rows="3" id="location_name"></textarea></dd>
+		</dl>
+		
+	</fieldset>
+	
+	<p class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+	</p>
+</form>
+
+<legend>{L_ACP_CLASSIFIEDS_LOCATIONS_TITLE}</legend>
+
+<!-- IF .locations -->
+
+	<table cellpadding="1" cellspacing="1">
+		<th>{L_LOCATION_NAME}</th>
+		<th>{L_LOCATION_SEARCH}</th>
+		<th>{L_LOCATION_EDIT}</th>
+		<!-- BEGIN locations -->  
+			<tr>      
+        <form method="post" action="{locations.U_EDIT}">                  
+          <td><input name="location_name" type="text" id="location_name" value="{locations.NAME}" size="40" /></td>
+					<td><a href="{locations.U_SEARCH}" target="_blank">{locations.L_SEARCH_LOCATION}</a></td>
+					<td style="text-align: center; background-color: #DCEBFE;">
+					  <input type="submit" id="submit" value="{L_SUBMIT}" class="button1" name="edit" style="margin-top:-6px;" />   
+					  <a href="{locations.U_DELETE}">{ICON_DELETE}</a> 
+					</td>  
+				</form>
+			</tr> 
+		<!-- END locations -->
+	</table>
+
+<!-- ELSE -->
+  <p>{L_NO_LOCATION}</p>
+<!-- ENDIF -->
+
+<!-- INCLUDE overall_footer.html -->

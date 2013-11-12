@@ -1,0 +1,47 @@
+<!-- INCLUDE overall_header.html -->
+
+<!-- IF S_FOUNDER -->
+	<h1>{L_ACP_CLASSIFIEDS}</h1>
+
+		<fieldset>
+			<legend>{L_ACP_CLASSIFIEDS_PURGE_TITLE}</legend>
+
+			<form id="purge_expired_sold_closed_form" method="post" action="{U_PURGE_EXPIRED_SOLD_CLOSED}">
+				<dl>
+					<dt><label for="purge_expired_sold_closed">{L_PURGE_EXPIRED_SOLD_CLOSED_ADS}</label><br /><span>{L_PURGE_EXPIRED_SOLD_CLOSED_ADS_EXPLAIN}</span></dt>
+					<dd><input type="hidden" name="action" value="purge_expired_sold_closed" /><input class="button2" type="submit" id="purge_expired_sold_closed" name="purge_expired_sold_closed" value="{L_RUN}" /></dd>
+				</dl>
+			</form>
+			
+			<form id="purge_closed_form" method="post" action="{U_PURGE_CLOSED}">
+				<dl>
+					<dt><label for="purge_closed">{L_PURGE_CLOSED_ADS}</label><br /><span>{L_PURGE_CLOSED_ADS_EXPLAIN}</span></dt>
+					<dd><input type="hidden" name="action" value="purge_closed" /><input class="button2" type="submit" id="purge_closed" name="purge_closed" value="{L_RUN}" /></dd>
+				</dl>
+			</form>
+
+			<form id="purge_sold_form" method="post" action="{U_PURGE_SOLD}">
+				<dl>
+					<dt><label for="purge_sold">{L_PURGE_SOLD_ADS}</label><br /><span>{L_PURGE_SOLD_ADS_EXPLAIN}</span></dt>
+					<dd><input type="hidden" name="action" value="purge_sold" /><input class="button2" type="submit" id="purge_sold" name="purge_sold" value="{L_RUN}" /></dd>
+				</dl>
+			</form>
+
+			<form id="purge_expired_form" method="post" action="{U_PURGE_EXPIRED}">
+				<dl>
+					<dt><label for="purge_expired">{L_PURGE_EXPIRED_ADS}</label><br /><span>{L_PURGE_EXPIRED_ADS_EXPLAIN}</span></dt>
+					<dd><input type="hidden" name="action" value="purge_expired" /><input class="button2" type="submit" id="purge_expired" name="purge_expired" value="{L_RUN}" /></dd>
+				</dl>
+			</form>
+
+			<form id="purge_active_form" method="post" action="{U_PURGE_ACTIVE}">
+				<dl>
+					<dt><label for="purge_active">{L_PURGE_ACTIVE_ADS}</label><br /><span>{L_PURGE_ACTIVE_ADS_EXPLAIN}</span></dt>
+					<dd><input type="hidden" name="action" value="purge_active" /><input class="button2" type="submit" id="purge_active" name="purge_active" value="{L_RUN}" /></dd>
+				</dl>
+			</form>
+
+		</fieldset>
+<!-- ENDIF -->
+
+<!-- INCLUDE overall_footer.html -->

@@ -1,0 +1,80 @@
+<!-- INCLUDE overall_header.html -->
+<h1>{L_ACP_CLASSIFIEDS}</h1>
+
+<form method="post" action="{U_ACTION}">
+	<fieldset>
+		<legend>{L_PREFIX_SETTINGS}</legend>
+		
+		<dl>
+			<dt><label for="mandatory_ad_prefix">{L_MANDATORY_AD_PREFIX}</label><br />{L_MANDATORY_AD_PREFIX_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="mandatory_ad_prefix" id="mandatory_ad_prefix" value="1" <!-- IF MANDATORY_AD_PREFIX -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="mandatory_ad_prefix" id="mandatory_ad_prefix" value="0" <!-- IF not MANDATORY_AD_PREFIX -->checked="checked"<!-- ENDIF --> /> {L_NO}
+			</dd>
+		</dl>
+		
+	</fieldset>
+	
+	<p class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+	</p>
+</form>
+
+
+<form method="post" action="{U_ADD_PREFIX}">
+	<fieldset>
+		<legend>{L_ADD_PREFIX}</legend>
+
+		<dl>
+			<dt><label for="prefix_name">{L_PREFIX_NAME}</label></dt>
+			<dd style="padding-left: 18px;"><input name="prefix_name" type="text" id="prefix_name" /></dd>
+		</dl>
+		
+		<dl>
+		  <dt><label for="prefix_short">{L_PREFIX_SHORT}</label></dt>
+			<dd style="padding-left: 18px;"><input name="prefix_short" type="text" id="prefix_short" /></dd>
+		</dl>
+		
+		<dl>
+		  <dt><label for="prefix_color">{L_PREFIX_COLOR}</label></dt>
+			<dd style="padding-left: 5px;">#&nbsp;<input name="prefix_color" type="text" id="prefix_color" /></dd>
+		</dl>
+
+	</fieldset>
+	
+	<p class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+	</p>
+</form>
+
+<legend>{L_ACP_CLASSIFIEDS_PREFIXES_TITLE}</legend>
+
+<!-- IF .prefixes -->
+	<table cellpadding="1" cellspacing="1">
+		<th width="30%">{L_PREFIX_NAME}</th>
+		<th width="20%">{L_PREFIX_SHORT}</th>
+		<th width="20%">{L_PREFIX_COLOR}</th>
+		<th width="20%">{L_PREFIX_SEARCH}</th>
+		<th width="10%">{L_PREFIX_EDIT}</th>
+		<!-- BEGIN prefixes -->  
+			<tr>      
+        <form method="post" action="{prefixes.U_EDIT}">                  
+          <td width="30%"><input name="prefix_name" type="text" id="prefix_name" value="{prefixes.NAME}" /></td>
+					<td width="20%"><input name="prefix_short" type="text" id="prefix_short" value="{prefixes.SHORT}" /></td>
+					<td width="20%"><span style="color: #{prefixes.COLOR}"><input name="prefix_color" type="text" id="prefix_color" value="{prefixes.COLOR}" /></span></td>
+					<td width="20%"><a href="{prefixes.U_SEARCH}" target="_blank">{prefixes.L_SEARCH_PREFIX}</a></td>
+					<td style="text-align: center; background-color: #DCEBFE; width: 10%;">
+					  <input type="submit" id="submit" value="{L_SUBMIT}" class="button1" name="edit" style="margin-top:-6px;" />   
+					  <a href="{prefixes.U_DELETE}">{ICON_DELETE}</a> 
+					</td>  
+				</form>
+			</tr> 
+		<!-- END prefixes -->
+	</table>
+<!-- ELSE -->
+  <p>{L_NO_PREFIXES}</p>
+<!-- ENDIF -->
+
+<!-- INCLUDE overall_footer.html -->

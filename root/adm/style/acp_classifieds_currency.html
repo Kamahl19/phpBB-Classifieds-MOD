@@ -1,0 +1,70 @@
+<!-- INCLUDE overall_header.html -->
+<h1>{L_ACP_CLASSIFIEDS}</h1>
+        
+<form method="post" action="{U_ACTION}">
+	<fieldset>
+		<legend>{L_CURRENCY_SETTINGS}</legend>
+		<dl>
+   		<dt><label for="default_currency">{L_DEFAULT_CURRENCY}</label><br />{L_DEFAULT_CURRENCY_EXPLAIN}</dt>
+			<dd>
+				<select name="default_currency" id="default_currency" style="width: 30%; max-width: 30%;">
+				<!-- BEGIN currency -->
+				  <option value="{currency.ID}"<!-- IF DEFAULT_CURRENCY == currency.ID --> selected="selected"<!-- ENDIF -->>{currency.NAME} [{currency.SHORT}]</option>
+				<!-- END currency -->
+				</select>
+			</dd>
+		</dl>
+	</fieldset>
+	
+	<p class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+	</p>
+</form>
+
+<form method="post" action="{U_ADD_CURRENCY}">
+	<fieldset>
+		<legend>{L_ADD_CURRENCY}</legend>
+
+		<dl>
+			<dt><label for="name">{L_CURRENCY_NAME}</label></dt>
+			<dd style="padding-left: 18px;"><input name="name" type="text" id="name" /></dd>
+		</dl>
+		
+		<dl>
+		  <dt><label for="short">{L_CURRENCY_SHORT}</label></dt>
+			<dd style="padding-left: 18px;"><input name="short" type="text" id="short" /></dd>
+		</dl>
+	</fieldset>
+	
+	<p class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+	</p>
+</form>
+
+<legend>{L_ACP_CLASSIFIEDS_CURRENCY_TITLE}</legend>
+
+<!-- IF .currency -->
+	<table cellpadding="1" cellspacing="1">
+		<th width="50%">{L_CURRENCY_NAME}</th>
+		<th width="30%">{L_CURRENCY_SHORT}</th>
+		<th width="20%">{L_CURRENCY_EDIT}</th>
+		<!-- BEGIN currency -->  
+			<tr>      
+        <form method="post" action="{currency.U_EDIT}">                  
+          <td width="50%"><input name="name" type="text" id="name" value="{currency.NAME}" /></td>
+					<td width="30%"><input name="short" type="text" id="short" value="{currency.SHORT}" /></td>
+					<td style="text-align: center; background-color: #DCEBFE; width: 20%;">
+					  <input type="submit" id="submit" value="{L_SUBMIT}" class="button1" name="edit" style="margin-top:-6px;" />   
+					  <a href="{currency.U_DELETE}">{ICON_DELETE}</a> 
+					</td>  
+				</form>
+			</tr> 
+		<!-- END currency -->
+	</table>
+<!-- ELSE -->
+  <p>{L_NO_CURRENCY}</p>
+<!-- ENDIF -->
+
+<!-- INCLUDE overall_footer.html -->

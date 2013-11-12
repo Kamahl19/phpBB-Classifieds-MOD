@@ -1,0 +1,193 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{L_ACP_CLASSIFIEDS}</h1>
+
+<form method="post" action="{U_ACTION}">
+	<fieldset>
+		<legend>{L_GENERAL_SETTINGS}</legend>
+
+		<dl>
+			<dt><label for="enable_classifieds">{L_ENABLE_CLASSIFIEDS}</label><br />{L_ENABLE_CLASSIFIEDS_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="enable_classifieds" id="enable_classifieds" value="1" <!-- IF ENABLE_CLASSIFIEDS -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="enable_classifieds" id="enable_classifieds" value="0" <!-- IF not ENABLE_CLASSIFIEDS -->checked="checked"<!-- ENDIF --> /> {L_NO}
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="disable_message">{L_DISABLE_MESSAGE}</label><br />{L_DISABLE_MESSAGE_EXPLAIN}</dt>
+			<dd>
+				<input type="text" id="disable_message" name="disable_message" value="{DISABLE_MESSAGE}" />
+			</dd>
+		</dl>
+		
+		<dl>
+			<dt><label for="number_ads">{L_NUMBER_ADS}</label><br />{L_NUMBER_ADS_EXPLAIN}</dt>
+			<dd>
+				<input type="text" size="3" id="number_ads" name="number_ads" value="{NUMBER_ADS}" />
+			</dd>
+		</dl>
+		
+		<dl>
+			<dt><label for="allow_comments">{L_ALLOW_COMMENTS}</label><br />{L_ALLOW_COMMENTS_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="allow_comments" id="allow_comments" value="1" <!-- IF ALLOW_COMMENTS -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="allow_comments" id="allow_comments" value="0" <!-- IF not ALLOW_COMMENTS -->checked="checked"<!-- ENDIF --> /> {L_NO}
+			</dd>
+		</dl>
+		
+		<dl>
+			<dt><label for="allow_addthis_button">{L_ALLOW_ADDTHIS_BUTTON}</label><br />{L_ALLOW_ADDTHIS_BUTTON_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="allow_addthis_button" id="allow_addthis_button" value="1" <!-- IF ALLOW_ADDTHIS_BUTTON -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="allow_addthis_button" id="allow_addthis_button" value="0" <!-- IF not ALLOW_ADDTHIS_BUTTON -->checked="checked"<!-- ENDIF --> /> {L_NO}
+			</dd>
+		</dl>
+		
+		<dl>
+			<dt><label for="enable_watch_cat">{L_ENABLE_WATCH_CAT}</label><br />{L_ENABLE_WATCH_CAT_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="enable_watch_cat" id="enable_watch_cat" value="1" <!-- IF ENABLE_WATCH_CAT -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="enable_watch_cat" id="enable_watch_cat" value="0" <!-- IF not ENABLE_WATCH_CAT -->checked="checked"<!-- ENDIF --> /> {L_NO}
+			</dd>
+		</dl>
+		
+		<dl>
+			<dt><label for="allow_classifieds_feeds">{L_ALLOW_CLASSIFIEDS_FEEDS}</label><br />{L_ALLOW_CLASSIFIEDS_FEEDS_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="allow_classifieds_feeds" id="allow_classifieds_feeds" value="1" <!-- IF ALLOW_CLASSIFIEDS_FEEDS -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="allow_classifieds_feeds" id="allow_classifieds_feeds" value="0" <!-- IF not ALLOW_CLASSIFIEDS_FEEDS -->checked="checked"<!-- ENDIF --> /> {L_NO}
+			</dd>
+		</dl>
+		
+		<dl>
+			<dt><label for="number_ad_feeds">{L_NUMBER_AD_FEEDS}</label><br />{L_NUMBER_AD_FEEDS_EXPLAIN}</dt>
+			<dd>
+				<input type="text" size="3" id="number_ad_feeds" name="number_ad_feeds" value="{NUMBER_AD_FEEDS}" />
+			</dd>
+		</dl>
+		
+		<dl>
+			<dt><label for="closed_color">{L_CLOSED_COLOR}</label><br />{L_CLOSED_COLOR_EXPLAIN}</dt>
+			<dd>
+				<input type="text" size="8" id="closed_color" name="closed_color" value="{CLOSED_COLOR}" />
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="sold_color">{L_SOLD_COLOR}</label><br />{L_SOLD_COLOR_EXPLAIN}</dt>
+			<dd>
+				<input type="text" size="8" id="sold_color" name="sold_color" value="{SOLD_COLOR}" />
+			</dd>
+		</dl>
+	</fieldset>
+	
+	<fieldset>
+		<legend>{L_EXPIRATION_SETTINGS}</legend>
+		<dl>
+			<dt><label for="number_expire">{L_NUMBER_EXPIRE}</label><br />{L_NUMBER_EXPIRE_EXPLAIN}</dt>
+			<dd>
+				<input type="text" size="3" id="number_expire" name="number_expire" value="{NUMBER_EXPIRE}" />
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="allow_users_set_expiration">{L_ALLOW_USERS_SET_EXPIRATION}</label><br />{L_ALLOW_USERS_SET_EXPIRATION_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="allow_users_set_expiration" id="allow_users_set_expiration" value="1" <!-- IF ALLOW_USERS_SET_EXPIRATION -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="allow_users_set_expiration" id="allow_users_set_expiration" value="0" <!-- IF not ALLOW_USERS_SET_EXPIRATION -->checked="checked"<!-- ENDIF --> /> {L_NO}
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="min_expiration_by_user">{L_MIN_EXPIRATION_BY_USER}</label><br />{L_MIN_EXPIRATION_BY_USER_EXPLAIN}</dt>
+			<dd>
+				<input type="text" size="3" id="min_expiration_by_user" name="min_expiration_by_user" value="{MIN_EXPIRATION_BY_USER}" />
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="max_expiration_by_user">{L_MAX_EXPIRATION_BY_USER}</label><br />{L_MAX_EXPIRATION_BY_USER_EXPLAIN}</dt>
+			<dd>
+				<input type="text" size="3" id="max_expiration_by_user" name="max_expiration_by_user" value="{MAX_EXPIRATION_BY_USER}" />
+			</dd>
+		</dl>
+	</fieldset>
+	
+  <fieldset>
+		<legend>{L_FIELDS_SETTINGS}</legend>
+
+		<dl>
+			<dt><label for="mandatory_ad_phone">{L_MANDATORY_PHONE}</label><br />{L_MANDATORY_PHONE_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="mandatory_phone" id="mandatory_phone" value="1" <!-- IF MANDATORY_PHONE -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="mandatory_phone" id="mandatory_phone" value="0" <!-- IF not MANDATORY_PHONE -->checked="checked"<!-- ENDIF --> /> {L_NO}
+			</dd>
+		</dl>
+		
+		<dl>
+			<dt><label for="allow_upload">{L_ALLOW_UPLOAD}</label><br />{L_ALLOW_UPLOAD_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="allow_upload" id="allow_upload" value="1" <!-- IF ALLOW_UPLOAD -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="allow_upload" id="allow_upload" value="0" <!-- IF not ALLOW_UPLOAD -->checked="checked"<!-- ENDIF --> /> {L_NO}
+			</dd>
+		</dl>
+		
+		<dl>
+			<dt><label for="max_img_size">{L_MAX_IMG_SIZE}</label><br />{L_MAX_IMG_SIZE_EXPLAIN}</dt>
+			<dd>
+				<input type="text" size="6" id="max_img_size" name="max_img_size" value="{MAX_IMG_SIZE}" /> kB
+			</dd>
+		</dl>
+		
+		<dl>
+			<dt><label for="max_images_per_ad">{L_MAX_IMAGES_PER_AD}</label><br />{L_MAX_IMAGES_PER_AD_EXPLAIN}</dt>
+			<dd>
+				<input type="text" size="6" id="max_images_per_ad" name="max_images_per_ad" value="{MAX_IMAGES_PER_AD}" />
+			</dd>
+		</dl>
+  </fieldset>
+  
+  <fieldset>
+		<legend>{L_REQUIRE_SETTINGS}</legend>
+		<dl>
+			<dt><label for="required_posts_to_create">{L_REQUIRED_POSTS_TO_CREATE}</label><br />{L_REQUIRED_POSTS_TO_CREATE_EXPLAIN}</dt>
+			<dd>
+    		<input type="text" size="6" id="required_posts_to_create" name="required_posts_to_create" value="{REQUIRED_POSTS_TO_CREATE}" />
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="required_posts_to_view">{L_REQUIRED_POSTS_TO_VIEW}</label><br />{L_REQUIRED_POSTS_TO_VIEW_EXPLAIN}</dt>
+			<dd>
+    		<input type="text" size="6" id="required_posts_to_view" name="required_posts_to_view" value="{REQUIRED_POSTS_TO_VIEW}" />
+			</dd>
+		</dl>
+  </fieldset>
+	
+	<fieldset>
+		<legend>{L_EMAIL_SETTINGS}</legend>
+		<dl>
+			<dt><label for="email_ad">{L_EMAIL_NEW_AD}</label><br />{L_EMAIL_NEW_AD_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="email_ad" id="email_ad" value="1" <!-- IF EMAIL_AD -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="email_ad" id="email_ad" value="0" <!-- IF not EMAIL_AD -->checked="checked"<!-- ENDIF --> /> {L_NO}
+			</dd>
+		</dl>
+
+		<dl>
+		<dt><label for="email_expire">{L_EMAIL_EXPIRED}</label><br />{L_EMAIL_EXPIRED_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="email_expire" id="email_expire" value="1" <!-- IF EMAIL_EXPIRE -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="email_expire" id="email_expire" value="0" <!-- IF not EMAIL_EXPIRE -->checked="checked"<!-- ENDIF --> /> {L_NO}
+			</dd>
+		</dl>
+	</fieldset>
+	
+	<p class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+	</p>
+</form>
+
+<!-- INCLUDE overall_footer.html -->

@@ -1,0 +1,27 @@
+<!-- IF .profile_ad -->
+	<div class="panel bg2">
+		<div class="inner"><span class="corners-top"><span></span></span>
+			<h3>{L_RECENT_ADS}</h3>
+	    <!-- BEGIN profile_ad -->
+	      <div style="float:left; width:{PROFILE_AD_BLOCK_WIDTH}%;">
+		      <div style="<!-- IF not profile_ad.S_LAST_ROW -->border-right: 1px solid #CCCCCC;<!-- ENDIF -->padding: 0 5px; font-size: 10px;">
+            <div style="width: 100px; height: 100px; float: left; margin-right: 5px;">
+              <a href="{profile_ad.AD_LINK}" style="display: inline-block;">
+              <!-- IF profile_ad.THUMB -->
+                <span style="display: inline-block; background: url('{profile_ad.THUMB}') no-repeat 50% 0; width: 100px; height: 100px;"></span>
+              <!-- ELSE -->
+                <span style="display: inline-block; background: url('{T_THEME_PATH}/images/noimage.gif') no-repeat 50% 50%; width: 100px; height: 100px;"></span>
+              <!-- ENDIF -->
+              </a>
+						</div>
+  					<a href="{profile_ad.AD_LINK}"><strong>{profile_ad.AD_TITLE}</strong></a><br />
+  					{L_CL_IN_CAT} <strong>{profile_ad.CATEGORY}</strong><br />
+  					<strong>{L_CL_PRICE}:</strong> {profile_ad.AD_PRICE}<br />
+  					<strong>{L_CL_SELLER}:</strong> {USERNAME}
+						<div class="clear"></div>
+					</div>
+				</div>
+			<!-- END profile_ad -->
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+<!-- ENDIF -->

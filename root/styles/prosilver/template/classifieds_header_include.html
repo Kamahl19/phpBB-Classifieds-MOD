@@ -1,0 +1,142 @@
+<!-- IF U_CLASSIFIEDS -->
+
+  <script type="text/javascript">
+  // <![CDATA[
+    if (typeof jQuery == 'undefined') {
+      document.write('<scr' + 'ipt type="text/javascript" src="{T_CLASSIFIEDS_PATH}js/jquery-1.7.2.min.js"></scr' + 'ipt>');
+    }
+  // ]]>
+  </script>
+
+  <!-- IF S_IN_CLASSIFIEDS_SINGLE_AD or S_IN_CLASSIFIEDS_MANAGE_AD -->   
+    <script type="text/javascript" src="{T_CLASSIFIEDS_PATH}js/jquery.lightbox-0.5.js"></script>  
+    
+    <script type="text/javascript">
+    // <![CDATA[
+      $(document).ready(function() {
+         $('#lightbox a').lightBox({
+        	imageLoading: '{T_THEME_PATH}/images/lightbox-ico-loading.gif',
+        	imageBtnClose: '{T_THEME_PATH}/images/lightbox-btn-close.gif',
+        	imageBtnPrev: '{T_THEME_PATH}/images/lightbox-btn-prev.gif',
+        	imageBtnNext: '{T_THEME_PATH}/images/lightbox-btn-next.gif',
+        	imageBlank:		'{T_THEME_PATH}/images/lightbox-blank.gif',
+        });
+      });
+    // ]]>
+    </script>
+  <!-- ENDIF -->
+  
+  <!-- IF S_IN_CLASSIFIEDS_SINGLE_AD -->
+  	<script type="text/javascript">
+  	// <![CDATA[
+  	
+  	  $(document).ready(function () {
+  	    var diff = {EXPIRE_DATE} - Math.floor(new Date().valueOf() / 1000);
+  	    CountBack(diff);
+			});
+  	
+			function CountBack(secs) {
+			  if ({AD_STATUS} == 1 || {AD_STATUS} == 2)
+			  {
+          $("#ad_countdown").html("{AD_STATUS_TEXT}");
+				}
+				else if (secs < 0)
+			  {
+          $("#ad_countdown").html("{L_CL_HAS_EXPIRED}");
+				}
+			  else
+			  {
+				  DisplayStr = "%%D%% {L_DAYS} %%H%%:%%M%%:%%S%%".replace(/%%D%%/g, ((Math.floor(secs/86400))%100000).toString());
+				  DisplayStr = DisplayStr.replace(/%%H%%/g, ((Math.floor(secs/3600))%24).toString());
+				  DisplayStr = DisplayStr.replace(/%%M%%/g, ((Math.floor(secs/60))%60).toString());
+				  DisplayStr = DisplayStr.replace(/%%S%%/g, ((Math.floor(secs/1))%60).toString());
+			    $("#ad_countdown").html(DisplayStr);
+				  setTimeout("CountBack(" + (secs+"-1") + ")", 1000);
+        }
+			}
+  	// ]]>
+  	</script>
+  <!-- ENDIF -->
+  
+  <!-- IF S_IN_CLASSIFIEDS_MANAGE_AD -->
+    <script type="text/javascript" src="{T_CLASSIFIEDS_PATH}js/jquery.uploadify-3.1.min.js"></script>
+    <script type="text/javascript">
+    // <![CDATA[
+      $(document).ready(function() {
+        
+        var currentTime = new Date;
+        var unixTime = parseInt(currentTime.getTime() / 1000);
+    
+		    $('#file_upload').uploadify({
+		        'swf'      				: '{T_CLASSIFIEDS_PATH}includes/uploadify.swf',
+		        'uploader' 				: '{T_CLASSIFIEDS_PATH}uploadify.php',
+		        'buttonText'      : '{L_CL_AD_UPLOAD_PHOTO}',
+		        'fileTypeExts' 		: '*.jpg; *.gif; *.png; *.jpeg',
+		        'fileTypeDesc'		: '{L_CL_SUPPORTED}',
+		        'fileSizeLimit'		: {S_MAX_IMG_SIZE},
+		        'multi'           : true,
+		        'auto'            : true,
+		        'removeCompleted' : false,
+		        'method'   				: 'post',
+    				'formData' 				: {'tempId': '<!-- IF S_MODE == "create_ad" -->{TEMP_AD_ID}<!-- ELSE -->0<!-- ENDIF -->', 'time': unixTime, 'adId': '<!-- IF S_MODE == "edit_ad" -->{AD_ID}<!-- ELSE -->0<!-- ENDIF -->', 'fileExts' : '*.jpg; *.gif; *.png; *.jpeg'},
+						'onUploadSuccess'	: function(file, data, response) {
+							                    if (data == "10")
+							                    {
+							                      $('#'+file.id).hide();
+																		alert("{L_CL_TOO_MANY_IMAGES}");
+																	}
+																	else
+																	{
+	                                	filename_class = data.substring(0, strrpos(data, '.')).replace(" ", "_");
+	                                	$('<div class="'+filename_class+'" style="background-color: #fff; width: 100px; height: 100px; float: left; margin: 5px 10px 5px 0; border: 1px solid #000;"><div style="float: left; display: block;"><span class="add_thumb" name="{T_THUMB_PATH}'+data+'" style="cursor: pointer; position: absolute; margin: 1px 0 0 6px; font-weight: bold; font-size: 1.3em;">T</span></div><div style="float: right; display: block;"><span class="deleteImg" name="'+data+'" style="cursor: pointer; position: absolute; margin: 3px 0 0 -18px;"><img src="{T_THEME_PATH}/images/cancel.png" alt="" /></span></div><span style="display:inline-block;background: #fff url(\'{T_THUMB_PATH}'+data+'\') no-repeat 50% 50%;width:100px;height:100px;"></span></div>').replaceAll('#'+file.id);
+	                                }
+																}
+		    });
+
+        function strrpos(haystack, needle, offset) {
+          var i = -1;
+          if (offset) {
+            i = (haystack + '').slice(offset).lastIndexOf(needle);
+            if (i !== -1) {
+              i += offset;
+            }
+          } else {
+            i = (haystack + '').lastIndexOf(needle);
+          }
+          return i >= 0 ? i : false;
+        }
+        
+        $(".deleteImg").live('click', function() {
+      		var filename = $(this).attr("name");
+  
+  		    $.ajax({
+  		        type : "POST",
+  		        url : '{T_CLASSIFIEDS_PATH}uploadify.php',
+  		        cache : false,
+  		        data : {
+  		          mode : 'delete',
+  		          filename : filename
+  		        },
+  		        success : function(data){
+  		          filename = filename.substring(0, strrpos(filename, '.')).replace(" ", "_");
+  			        $('.'+filename).hide().remove();
+  		        }
+  		    });
+      	});
+      	
+      	$(".add_thumb").live('click', function() {
+      		var filename = $(this).attr("name");
+
+          $("input#thumb").val(filename);
+      	});
+      	
+      });
+    // ]]>
+    </script>
+  <!-- ENDIF -->
+  
+  <!-- IF U_CLASSIFIEDS_FEEDS -->
+  	<link rel="alternate" type="application/rss+xml" title="{SITENAME}" href="{U_CLASSIFIEDS_FEEDS}" />
+  <!-- ENDIF -->
+  
+<!-- ENDIF -->

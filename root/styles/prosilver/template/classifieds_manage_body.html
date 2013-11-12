@@ -1,0 +1,276 @@
+<!-- INCLUDE overall_header.html -->        
+
+<!-- IF S_MODE == 'create_ad' or S_MODE == 'edit_ad' -->
+
+  <!-- IF S_RULES_DISPLAY and not S_MUST_AGREE -->
+  	<div class="panel bg2" style="font-size: 11px;">
+  		<div class="inner"><span class="corners-top"><span></span></span>
+  			<h3>{S_RULES_TITLE}</h3>
+      		<!-- IF S_RULES_AS_LINK -->{L_CL_LINK_TO_RULES}<!-- ELSE -->{S_RULES_TEXT}<!-- ENDIF -->
+  		<span class="corners-bottom"><span></span></span></div>
+  	</div>
+  <!-- ENDIF -->     
+  
+  <form action="{U_ACTION}" method="post" id="postform" name="postform">
+		<fieldset class="classified_fields">
+        
+    	<div class="panel bg2">
+    		<div class="inner"><span class="corners-top"><span></span></span>
+    
+    			<h3>{L_CL_NEW_AD}</h3>
+    
+					<!-- IF ERROR --><p class="error">{ERROR}</p><!-- ENDIF -->       
+
+					<dl>
+						<dt><label for="ad_title">{L_CL_AD_TITLE}<span class="mandatory"> *</span></label></dt>
+						<dd><input type="text" name="ad_title" id="ad_title" maxlength="70" value="{AD_TITLE}" class="inputbox" style="width: 30%;" /></dd>
+					</dl>
+
+					<dl>
+						<dt><label for="short_desc">{L_CL_SHORT_DESC}<span class="mandatory"> *</span></label><br />{L_CL_SHORT_DESC_EXPLAIN}</dt>
+						<dd><input type="text" name="short_desc" id="short_desc" maxlength="128" value="{SHORT_DESC}" class="inputbox" style="width: 30%;" /></dd>
+					</dl>
+					
+					<dl>
+						<dt><label for="message">{L_CL_AD_DESCRIPTION}<span class="mandatory"> *</span></label></dt>
+						<dd>
+              <!-- INCLUDE posting_buttons.html -->
+              <div id="smiley-box">
+                <!-- IF S_SMILIES_ALLOWED and .smiley -->
+                  <strong>{L_SMILIES}</strong><br />
+                  <!-- BEGIN smiley -->
+                    <a href="#" onclick="insert_text('{smiley.A_SMILEY_CODE}', true); return false;"><img src="{smiley.SMILEY_IMG}" width="{smiley.SMILEY_WIDTH}" height="{smiley.SMILEY_HEIGHT}" alt="{smiley.SMILEY_CODE}" title="{smiley.SMILEY_DESC}" /></a>
+                  <!-- END smiley -->
+                  <!-- IF S_SHOW_SMILEY_LINK -->
+                    <br /><a href="{U_MORE_SMILIES}" onclick="popup(this.href, 300, 350, '_phpbbsmilies'); return false;">{L_MORE_SMILIES}</a>
+                  <!-- ENDIF -->
+                <!-- ENDIF -->
+              </div>
+              <div id="message-box">
+                <textarea name="message" id="message" rows="15" cols="76" class="inputbox">{AD_DESCRIPTION}</textarea>
+              </div>    
+						</dd>
+					</dl>                                                                                                             
+             
+					<dl>
+						<dt><label for="ad_price">{L_CL_PRICE}<span class="mandatory"> *</span></label></dt>
+						<dd>
+              <input type="text" name="ad_price" id="ad_price" maxlength="40" value="{AD_PRICE}" class="inputbox" style="width: 30%;" />
+  						<select name="ad_currency" id="ad_currency">
+  						  <!-- BEGIN currency -->
+        				  <option value="{currency.SHORT}"<!-- IF (S_MODE == 'create_ad' && AD_CURRENCY == '' && S_DEFAULT_CURRENCY == currency.ID) || (S_MODE == 'create_ad' && AD_CURRENCY == currency.SHORT) || (S_MODE == 'edit_ad' && AD_CURRENCY == currency.SHORT) --> selected="selected"<!-- ENDIF -->>{currency.NAME} [{currency.SHORT}]</option>
+        				<!-- END currency -->
+  						</select>
+  						<br />
+  						<input type="checkbox" value="1" name="ad_price_text" id="ad_price_text"<!-- IF AD_PRICE_TEXT == 1 --> checked="checked"<!-- ENDIF --> /> <span style="font-weight: bold; color:#425067;">{L_CL_AD_PRICE_TEXT}</span>
+            </dd>
+					</dl>
+
+					<dl>
+						<dt><label for="cat">{L_CL_CAT_NAME}<span class="mandatory"> *</span></label></dt>
+	          <dd>
+							<select name="cat" id="cat" style="width: 30%; max-width: 30%;">
+             		<option value=""></option>
+       					<!-- BEGIN cat -->
+									<option value="{cat.ID}"<!-- IF cat.ID == CAT_ID --> selected="selected"<!-- ELSEIF cat.PARENT --> class="is_parent" disabled="disabled"<!-- ENDIF -->>{cat.NAME}</option>
+								<!-- END cat -->
+							</select>
+						</dd>
+					</dl>
+					
+					<!-- IF .prefixes -->
+					<dl>
+						<dt><label for="ad_prefix_id">{L_CL_AD_PREFIX}<!-- IF S_MANDATORY_AD_PREFIX --><span class="mandatory"> *</span><!-- ENDIF --></label></dt>
+	          <dd>
+							<select name="ad_prefix_id" id="ad_prefix_id" style="width: 30%; max-width: 30%;">
+  						  <option value="" selected="selected"></option>
+  						  <!-- BEGIN prefixes -->
+        				  <option value="{prefixes.ID}"<!-- IF (S_MODE == 'create_ad' || S_MODE == 'edit_ad' ) && AD_PREFIX_ID == prefixes.ID --> selected="selected"<!-- ENDIF -->>[{prefixes.SHORT}] {prefixes.NAME}</option>
+        				<!-- END prefixes -->
+  						</select>
+						</dd>
+					</dl>        
+					<!-- ENDIF -->
+					
+					<!-- IF .locations -->
+					<dl>
+						<dt><label for="ad_location_id">{L_CL_AD_LOCATION}<!-- IF S_MANDATORY_AD_LOCATION --><span class="mandatory"> *</span><!-- ENDIF --></label></dt>
+	          <dd>
+							<select name="ad_location_id" id="ad_location_id" style="width: 30%; max-width: 30%;">
+  						  <option value="" selected="selected"></option>
+  						  <!-- BEGIN locations -->
+        				  <option value="{locations.ID}"<!-- IF ( S_MODE == 'create_ad' || S_MODE == 'edit_ad' ) && AD_LOCATION_ID == locations.ID --> selected="selected"<!-- ENDIF -->>{locations.NAME}</option>
+        				<!-- END locations -->
+  						</select>
+						</dd>
+					</dl>        
+					<!-- ENDIF -->
+
+					<dl>
+						<dt><label for="phone">{L_CL_PHONE}<!-- IF S_MANDATORY_PHONE --><span class="mandatory"> *</span><!-- ENDIF --></label></dt>
+						<dd><input type="text" name="phone" id="phone" maxlength="40" value="{PHONE}" class="inputbox" style="width: 30%;" /></dd>
+					</dl>
+
+					<!-- IF S_ALLOW_USERS_SET_EXPIRATION and S_MODE == 'create_ad' -->
+     				<dl>
+							<dt><label for="days_active">{L_CL_DAYS_ACTIVE}<span class="mandatory"> *</span></label><br />{L_CL_DAYS_ACTIVE_EXPLAIN}</dt>
+							<dd><input type="text" name="days_active" id="days_active" value="{DAYS_ACTIVE}" class="inputbox" style="width: 10%;" /></dd>
+						</dl>
+					<!-- ENDIF -->
+
+	   			<dl>
+						<dt><label for="paypal">{L_CL_PAYPAL_EMAIL}</label><br />{L_CL_PAYPAL_EXPLAIN}</dt>
+						<dd><input id="paypal" value="{PAYPAL}" name="paypal" type="text" class="inputbox" style="width: 30%;" /></dd>
+					</dl>
+
+					<dl>
+						<dt><label for="thumb">{L_CL_THUMB}</label><br />{L_CL_THUMB_EXPLAIN}</dt>
+						<dd><input type="text" name="thumb" id="thumb" value="{THUMB}" class="inputbox" style="width: 30%;" /></dd>
+					</dl>
+					
+					<!-- IF S_COMMENTS_ENABLED -->
+	        <dl>
+						<dt><label for="comment01">{L_CL_EMAIL_COMMENTS}</label></dt>
+						<dd>
+	      			<label for="comment01"><input type="radio" name="notify_comments" id="comment01"  value="1" <!-- IF NOTIFY_COMMENTS -->checked="checked"<!-- ENDIF --> /> {L_YES}</label>
+							<label for="comment10"><input type="radio" name="notify_comments" id="comment10" value="0" <!-- IF not NOTIFY_COMMENTS -->checked="checked"<!-- ENDIF -->  /> {L_NO}</label>
+						</dd>
+					</dl>                                  
+					<!-- ENDIF -->
+					
+					<!-- IF S_RULES_DISPLAY -->
+					  <!-- IF S_RULES_AS_LINK and S_MUST_AGREE -->
+							<dl>
+							  <dd>
+									<input type="checkbox" value="1" name="agree_rules" id="agree_rules" /> <strong>{L_CL_AGREE_WITH_RULES_LINK}</strong><span class="mandatory"> *</span>
+								</dd>
+              </dl>
+						<!-- ELSEIF not S_RULES_AS_LINK and S_MUST_AGREE -->
+						  <dl>
+						    <dt><div style="background-color: #ffffff; height: 80px; border: 1px solid #000; padding: 5px; font-size: 10px; overflow: auto; ">{S_RULES_TEXT}</div></dt>
+							  <dd>
+									<input type="checkbox" value="1" name="agree_rules" id="agree_rules" /> <strong>{L_CL_AGREE_WITH_RULES}</strong><span class="mandatory"> *</span>
+								</dd>
+              </dl>
+						<!-- ENDIF -->
+					<!-- ENDIF -->      
+
+					<div style="margin-top: 10px;">
+						<span class="mandatory">*</span> {L_CL_OBLIGATION_FIELDS}
+					</div>
+                                              
+    		<span class="corners-bottom"><span></span></span></div>
+    	</div>       
+    	
+    	<!-- IF S_ALLOW_UPLOAD -->
+      	<div class="panel bg2">
+      		<div class="inner"><span class="corners-top"><span></span></span>
+      		  <h3>{L_CL_IMAGE_UPLOAD}</h3>        
+      		  
+      		  <input id="file_upload" name="file_upload" type="file" />
+      		  
+      		  <!-- IF .images -->
+      		    <div class="clear"></div>
+        		  <div id="lightbox">      
+    						<!-- BEGIN images -->
+      						<div class="{images.FILE}" style="background-color: #fff; width: 100px; height: 100px; float: left; margin: 5px 10px 5px 0; border: 1px solid #000;">
+      						  <div style="float: left; display: block;"><span class="add_thumb" name="{images.THUMB_SOURCE}" style="cursor: pointer; position: absolute; margin: 1px 0 0 6px; font-weight: bold; font-size: 1.3em;">T</span></div>
+                    <div style="float: right; display: block;"><span class="deleteImg" name="{images.FILENAME}" style="cursor: pointer; position: absolute; margin: 3px 0 0 -18px;"><img src="{T_THEME_PATH}/images/cancel.png" alt="" /></span></div>
+                    <a href="{images.SOURCE}" title="{AD_TITLE}" style="display:inline-block">
+                      <span style="display:inline-block;background: #fff url('{images.THUMB_SOURCE}') no-repeat 50% 50%;width:100px;height:100px;"></span>
+                    </a>
+    							</div>
+    						<!-- END images -->
+  						</div>
+            	<div class="clear"></div>
+          	<!-- ENDIF -->
+          <span class="corners-bottom"><span></span></span></div>
+      	</div>    
+      	
+    	<!-- ENDIF -->
+      
+      <div style="padding: 5px 10px;">
+        <fieldset class="submit-buttons" style="text-align: left;">
+          <!-- IF S_MODE == "create_ad" --><input type="hidden" name="temp_ad_id" value="{TEMP_AD_ID}" /><!-- ENDIF -->
+          <input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" style="margin-right: 10px;" />
+          <input class="button1" type="submit" name="submit" value="{L_SUBMIT}" />
+        </fieldset>
+      </div>  
+  
+    </fieldset>  
+  </form>     
+  
+<!-- ELSEIF S_MODE == 'move_ad' -->
+  <div class="panel" id="message">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		  <h3>{L_CL_MOVE_CLASSIFIED}</h3>
+      	<form action="{U_ACTION}" method="post" id="postform" enctype="multipart/form-data">
+					<fieldset class="fields1">
+					  <!-- IF ERROR --><p class="error">{ERROR}</p><!-- ENDIF -->
+					  <dl>
+							<dt><label for="cat">{L_CL_CAT_NAME}</label><br />{L_CL_CATEGORY_EXPLAIN}</dt>
+		          <dd>
+								<select name="cat" id="cat">
+									<!-- BEGIN cat -->
+										<option value="{cat.ID}" <!-- IF cat.ID == CAT_ID -->selected="selected"<!-- ELSEIF cat.PARENT -->class="is_parent" disabled="disabled"<!-- ENDIF -->>{cat.NAME}</option>
+									<!-- END cat -->
+								</select>
+							</dd>
+						</dl>
+						<dl>
+							<dt>&nbsp;</dt>
+							<dd><input class="button1" type="submit" name="submit" value="{L_SUBMIT}" /></dd>
+						</dl>
+          </fieldset>
+      	</form>
+  	<span class="corners-bottom"><span></span></span></div>
+	</div>
+<!-- ELSEIF S_MODE == 'report_ad' -->
+	<div class="panel" id="message">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		  <h3>{L_CL_REPORT_CLASSIFIED}</h3>
+      	<form action="{U_ACTION}" method="post" id="postform" enctype="multipart/form-data">
+					<fieldset class="fields1">
+					  <!-- IF ERROR --><p class="error">{ERROR}</p><!-- ENDIF -->
+					  <dl>
+							<dt><label for="cat">{L_CL_REPORT_TEXT}</label><br />{L_CL_REPORT_TEXT_EXPLAIN}</dt>
+		          <dd>
+		            <textarea name="report_text" id="report_text" rows="10" cols="76" class="inputbox">{REPORT_TEXT}</textarea>
+							</dd>
+						</dl>
+						<dl>
+							<dt>&nbsp;</dt>
+      				<dd>
+								<input type="submit" name="submit" class="button1" value="{L_SUBMIT}" />
+							</dd>
+						</dl>
+          </fieldset>
+      	</form>
+  	<span class="corners-bottom"><span></span></span></div>
+	</div>
+<!-- ELSEIF S_MODE == 'extend_ad' and S_ALLOW_USERS_SET_EXPIRATION -->
+	<div class="panel" id="message">
+		<div class="inner"><span class="corners-top"><span></span></span>
+		  <h3>{L_CL_EXTEND_CLASSIFIED}</h3>
+      	<form action="{U_ACTION}" method="post" id="postform" enctype="multipart/form-data">
+					<fieldset class="fields1">
+					  <!-- IF ERROR --><p class="error">{ERROR}</p><!-- ENDIF -->
+      			<dl>
+							<dt><label for="days_active">{L_CL_DAYS_ACTIVE}<span class="mandatory">*</span></label><br />{L_CL_DAYS_ACTIVE_EXPLAIN}</dt>
+							<dd><input type="text" name="days_active" id="days_active" size="5" value="{DAYS_ACTIVE}" class="inputbox autowidth" /></dd>
+						</dl>
+						<dl>
+							<dt>&nbsp;</dt>
+      				<dd>
+								<input type="submit" name="submit" class="button1" value="{L_SUBMIT}" />
+							</dd>
+						</dl>
+          </fieldset>
+      	</form>
+  	<span class="corners-bottom"><span></span></span></div>
+	</div>
+<!-- ENDIF -->
+
+<div class="classifieds_copyright">{L_CL_CLASSIFIEDS_COPYRIGHT}</div>
+
+<!-- INCLUDE overall_footer.html -->

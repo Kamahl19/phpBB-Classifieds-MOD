@@ -1,0 +1,303 @@
+<!-- INCLUDE overall_header.html -->
+
+	<!-- IF S_RULES_DISPLAY -->
+		<div class="panel bg2" style="font-size: 11px;">
+			<div class="inner"><span class="corners-top"><span></span></span>
+				<h3>{S_RULES_TITLE}</h3>
+	    		<!-- IF S_RULES_AS_LINK -->{L_CL_LINK_TO_RULES}<!-- ELSE -->{S_RULES_TEXT}<!-- ENDIF -->
+			<span class="corners-bottom"><span></span></span></div>
+		</div>
+	<!-- ENDIF -->
+
+  <h2 id="classifieds_title" style="float: left;">{CLASSIFIEDS_TITLE}</h2>
+
+  <!-- IF U_NEW_AD and not S_IS_BOT -->
+	  <div class="buttons new_ad_button">
+			<div class="post_ad-icon"><a href="{U_NEW_AD}" title="{L_CL_NEW_AD}"><span></span>{L_CL_NEW_AD}</a></div>
+		</div>
+	<!-- ENDIF -->
+	
+	<div class="clear"></div>
+
+	<div id="ad_list">
+  	<!-- IF .ad -->
+			<div class="forabg">
+				<div class="inner"><span class="corners-top"><span></span></span>
+
+					<ul class="topiclist">
+						<li class="header">
+							<dl class="icon">
+								<dd style="width:100px;">{L_IMAGE}</dd>
+								<dt style="width:40%; font-weight: normal; padding-right: 5px;">{L_CL_AD_TITLE}</dt>
+								<dd class="views" style="width:8%;">{L_CL_PRICE}</dd>
+								<dd class="views" style="width:8%;">{L_VIEWS}</dd>
+								<dd class="lastpost" style="width:16%;">{L_CL_AD_INFO}</dd>
+							</dl>
+						</li>
+					</ul>
+
+					<ul class="topiclist forums">
+						<!-- BEGIN ad -->
+	      			<li <!-- IF ad.AD_STATUS == 1 -->style="background-color:{S_SOLD_COLOR};"<!-- ELSEIF ad.AD_STATUS == 2 -->style="background-color:{S_CLOSED_COLOR};"<!-- ENDIF --> class="row">
+								<dl>
+								  <dd style="padding: 0;">
+								    <div style="width: 100px; height: 60px; float: left; padding: 0 0 0 3px;">
+  								    <a href="{ad.U_AD_LINK}" style="display: inline-block;">
+    									  <!-- IF ad.THUMB -->
+    											<span style="display: inline-block; background: url('{ad.THUMB}') no-repeat 50% 50%; width: 100px; height: 60px;"></span>
+    									  <!-- ELSE -->
+    											<span style="display: inline-block; background: url('{T_THEME_PATH}/images/noimage.gif') no-repeat 50% 50%; width: 100px; height: 60px;"></span>
+    									  <!-- ENDIF -->
+  									  </a>
+									  </div>
+									</dd>
+									<dt style="width:39%;">
+									  <!-- IF ad.AD_STATUS_TEXT -->{ad.AD_STATUS_TEXT} <!-- ENDIF -->
+                    <!-- IF ad.AD_PREFIX --><span style="font-weight: bold; <!-- IF ad.AD_PREFIX_COLOR -->color: #{ad.AD_PREFIX_COLOR};<!-- ENDIF -->">[{ad.AD_PREFIX}]</span><!-- ENDIF -->
+										<a href="{ad.U_AD_LINK}"><b>{ad.AD_TITLE}</b></a>
+										<!-- IF ad.S_REPORTED -->{REPORTED_IMG}<!-- ENDIF --><br />
+										<span style="font-style:italic">{ad.AD_SHORT_DESC}</span>
+									</dt>
+									<dd class="views" style="font-size:1.1em;">{ad.AD_PRICE}</dd>
+									<dd class="views">{ad.AD_VIEWS}</dd>
+									<dd class="lastpost" style="padding-left:5px;">
+										{L_POST_BY_AUTHOR} <strong>{ad.AD_POSTER}</strong><br />
+	                  {L_CL_IN_CAT} <strong>{ad.CATEGORY}</strong><br />
+	                  <!-- IF (ad.S_EXPIRED and ad.U_EXTEND_LINK) or ad.U_DELETE_LINK -->
+										 	<ul class="profile-icons" style="padding-top: 2px;">
+												<!-- IF ad.S_EXPIRED and ad.U_EXTEND_LINK --><li class="extend_ad-icon" style="margin: 2px 3px 0 0;"><a href="{ad.U_EXTEND_LINK}" title="{L_CL_EXTEND}"><span>{L_CL_EXTEND}</span></a></li><!-- ENDIF -->
+												<!-- IF ad.U_EDIT_LINK --><li class="edit-icon" style="margin: 0 3px 0 0;"><a href="{ad.U_EDIT_LINK}" title="{L_EDIT}"><span>{L_EDIT}</span></a></li><!-- ENDIF -->
+											  <!-- IF ad.U_DELETE_LINK --><li class="delete-icon" style="margin: 1px 0 0 0;"><a href="{ad.U_DELETE_LINK}" title="{L_DELETE}"><span>{L_DELETE}</span></a></li><!-- ENDIF -->
+                      </ul>
+	         					<!-- ENDIF -->
+									</dd>
+								</dl>
+							</li>
+						<!-- END ad -->
+					</ul>
+				<span class="corners-bottom"><span></span></span></div>
+			</div>
+    <!-- ELSE -->
+		  <div class="panel bg2">
+				<div class="inner"><span class="corners-top"><span></span></span>
+				<strong style="font-size:13px;">{L_CL_EMPTY_CAT}</strong>
+				<span class="corners-bottom"><span></span></span></div>
+			</div>
+		<!-- ENDIF -->
+
+		<ul class="linklist">
+		  <li class="rightside pagination">{TOTAL_ADS} &bull; <!-- IF PAGINATION --><span>{PAGINATION}</span><!-- ELSE -->{PAGE_NUMBER}<!-- ENDIF --></li>
+		</ul>
+		
+		<!-- IF U_NEW_AD and not S_IS_BOT -->
+	    <div class="clear"></div>
+		  <div class="buttons new_ad_button">
+				<div class="post_ad-icon"><a href="{U_NEW_AD}" title="{L_CL_NEW_AD}"><span></span>{L_CL_NEW_AD}</a></div>
+			</div>
+		<!-- ENDIF -->
+		
+		<div class="clear" style="height: 5px;"></div>
+
+		<!-- IF S_DISPLAY_RANDOM_BLOCK and .rand_ad and not S_RANDOM_LEFT -->
+			<div class="panel bg2">
+				<div class="inner"><span class="corners-top"><span></span></span>
+					<h3>{L_CL_RANDOM_AD}</h3>
+			    <!-- BEGIN rand_ad -->
+						<div style="float:left; width:{RANDOM_BLOCK_WIDTH}%;">
+    		      <div style="<!-- IF not rand_ad.S_LAST_ROW -->border-right: 1px solid #CCCCCC;<!-- ENDIF -->padding: 0 5px; font-size: 10px;">
+                <div style="width: 100px; height: 100px; float: left; margin-right: 5px;">
+                  <a href="{rand_ad.AD_LINK}" style="display: inline-block;">
+                  <!-- IF rand_ad.THUMB -->
+                    <span style="display: inline-block; background: url('{rand_ad.THUMB}') no-repeat 50% 0; width: 100px; height: 100px;"></span>
+                  <!-- ELSE -->
+                    <span style="display: inline-block; background: url('{T_THEME_PATH}/images/noimage.gif') no-repeat 50% 50%; width: 100px; height: 100px;"></span>
+                  <!-- ENDIF -->
+                  </a>
+    						</div>
+      					<a href="{rand_ad.AD_LINK}"><strong>{rand_ad.AD_TITLE}</strong></a><br />
+      					{L_CL_IN_CAT} <strong>{rand_ad.CATEGORY}</strong><br />
+      					<strong>{L_CL_PRICE}:</strong> {rand_ad.AD_PRICE}<br />
+      					<strong>{L_CL_SELLER}:</strong> {rand_ad.AD_POSTER}
+    						<div class="clear"></div>
+    					</div>
+    				</div>
+					<!-- END rand_ad -->
+				<span class="corners-bottom"><span></span></span></div>
+			</div>
+		<!-- ENDIF -->
+		
+		<!-- IF S_DISPLAY_HOT_BLOCK and .hot_ad and not S_HOT_LEFT -->
+			<div class="panel bg2">
+				<div class="inner"><span class="corners-top"><span></span></span>
+					<h3>{L_CL_HOT_AD}</h3>
+			    <!-- BEGIN hot_ad -->					
+						<div style="float:left; width:{HOT_BLOCK_WIDTH}%;">
+    		      <div style="<!-- IF not hot_ad.S_LAST_ROW -->border-right: 1px solid #CCCCCC;<!-- ENDIF -->padding: 0 5px; font-size: 10px;">
+                <div style="width: 100px; height: 100px; float: left; margin-right: 5px;">
+                  <a href="{hot_ad.AD_LINK}" style="display: inline-block;">
+                  <!-- IF hot_ad.THUMB -->
+                    <span style="display: inline-block; background: url('{hot_ad.THUMB}') no-repeat 50% 0; width: 100px; height: 100px;"></span>
+                  <!-- ELSE -->
+                    <span style="display: inline-block; background: url('{T_THEME_PATH}/images/noimage.gif') no-repeat 50% 50%; width: 100px; height: 100px;"></span>
+                  <!-- ENDIF -->
+                  </a>
+    						</div>
+      					<a href="{hot_ad.AD_LINK}"><strong>{hot_ad.AD_TITLE}</strong></a><br />
+      					{L_CL_IN_CAT} <strong>{hot_ad.CATEGORY}</strong><br />
+      					<strong>{L_CL_PRICE}:</strong> {hot_ad.AD_PRICE}<br />
+      					<strong>{L_CL_SELLER}:</strong> {hot_ad.AD_POSTER}
+    						<div class="clear"></div>
+    					</div>
+    				</div>
+					<!-- END hot_ad -->
+				<span class="corners-bottom"><span></span></span></div>
+			</div>
+		<!-- ENDIF -->
+	</div>
+
+	<div id="classifieds_sidebar">
+	
+		<div class="panel bg2">
+			<div class="inner"><span class="corners-top"><span></span></span>
+				<h3>{L_CL_CATEGORIES}</h3>
+				<ul class="topiclist">
+					{CATEGORIES}
+				</ul>
+    	<span class="corners-bottom"><span></span></span></div>
+		</div>
+		
+		<!-- IF not S_IS_BOT and U_CLASSIFIEDS_RSS -->
+			<div class="panel bg2">
+			  <div class="inner"><span class="corners-top"><span></span></span>
+			  	<h3>{L_CL_RSS}</h3>
+					<img src="{T_THEME_PATH}/images/feed.gif" width="16" height="16" border="0" style="vertical-align: middle;" alt="{L_CL_CLASSIFIEDS_RSS}" /> <a href="{U_CLASSIFIEDS_RSS}">{L_CL_CLASSIFIEDS_RSS}</a>
+        <span class="corners-bottom"><span></span></span></div>
+			</div>
+		<!-- ENDIF -->
+
+    <!-- IF S_USER_LOGGED_IN -->
+	    <div class="panel bg2">
+				<div class="inner"><span class="corners-top"><span></span></span>
+					<h3>{L_CL_USER_CONTROLS}</h3>
+					<ul class="topiclist">
+						<li class="header"><strong>{L_CL_MY_ADS}</strong></li>
+						{USER_AD_STATS}
+						<!-- IF U_VIEW_REPORTED_LINK --><br /><li class="header">» <a href="{U_VIEW_REPORTED_LINK}">{L_CL_VIEW_REPORTED}</a></li><!-- ENDIF -->
+            <!-- IF not S_IS_BOT and U_WATCH_CAT -->
+							<br />
+							<li <!-- IF S_WATCHING_CAT -->class="icon-unsubscribe"<!-- ELSE -->class="icon-subscribe"<!-- ENDIF -->><a href="{U_WATCH_CAT}" title="<!-- IF S_WATCHING_CAT -->{L_CL_UNWATCH_CAT}<!-- ELSE -->{L_CL_WATCH_CAT}<!-- ENDIF -->"><!-- IF S_WATCHING_CAT -->{L_CL_UNWATCH_CAT}<!-- ELSE -->{L_CL_WATCH_CAT}<!-- ENDIF --></a></li>
+            <!-- ENDIF -->
+					</ul>
+	      <span class="corners-bottom"><span></span></span></div>
+			</div>
+    <!-- ENDIF -->
+
+    <div class="panel bg2" id="classifieds_search">
+			<div class="inner"><span class="corners-top"><span></span></span>
+			  <h3>{L_SEARCH}</h3>
+			  
+			  <form method="post" action="{U_SEARCH_ADS}">
+			  
+					<input name="stext" type="text" class="inputbox search_input" value="{STEXT}" style="font-size: 11px;" />
+					
+					<select name="scategory" class="search_input" style="font-size: 11px;">
+         		<option value="" selected="selected">{L_CL_SCHOOSE_CATEGORY}..</option>
+   					<!-- BEGIN cat -->
+							<option value="{cat.ID}"<!-- IF cat.PARENT --> class="is_parent" disabled="disabled"<!-- ELSEIF cat.ID == SCATEGORY --> selected="selected"<!-- ENDIF -->>{cat.NAME}</option>
+						<!-- END cat -->
+					</select>
+					
+					<!-- IF .locations -->
+  					<select name="slocation" class="search_input"  style="font-size: 11px;">
+    					<option value="" selected="selected">{L_CL_CHOOSE_LOCATION}..</option>
+  					  <!-- BEGIN locations -->
+      				  <option value="{locations.ID}"<!-- IF locations.ID == SLOCATION --> selected="selected"<!-- ENDIF -->>{locations.NAME}</option>
+      				<!-- END locations -->
+  					</select>
+					<!-- ENDIF -->
+					
+					<!-- IF .prefixes -->
+					  <select name="sprefix" class="search_input"  style="font-size: 11px;">
+    					<option value="" selected="selected">{L_CL_CHOOSE_PREFIX}..</option>
+  					  <!-- BEGIN prefixes -->
+      				  <option value="{prefixes.ID}"<!-- IF prefixes.ID == SPREFIX --> selected="selected"<!-- ENDIF -->>{prefixes.L_CL_SEARCH_BY_PREFIX}</option>
+      				<!-- END prefixes -->
+  					</select>
+  				<!-- ENDIF -->        
+  				
+					<select name="sorder" class="search_input"  style="font-size: 11px;">
+  					<option value="time" selected="selected">{L_CL_ORDER_TIME}</option>
+  					<option value="price"<!-- IF SORDER == 'price' --> selected="selected"<!-- ENDIF -->>{L_CL_ORDER_PRICE}</option>
+            <option value="views"<!-- IF SORDER == 'views' --> selected="selected"<!-- ENDIF -->>{L_CL_ORDER_VIEWS}</option>
+					</select>
+					
+					<select name="sordertype" class="search_input"  style="font-size: 11px;">
+  					<option value="desc" selected="selected">{L_CL_ORDER_DESCENDING}</option>
+  					<option value="asc"<!-- IF SORDERTYPE == 'asc' --> selected="selected"<!-- ENDIF -->>{L_CL_ORDER_ASCENDING}</option>
+					</select>
+					
+					<br /><label>{L_CL_SEARCH_ONLY_ACTIVE} <input type="checkbox" name="sactive" value="1" <!-- IF SACTIVE != '0' -->checked="checked"<!-- ENDIF --> /></label><br />
+
+					<input class="button1" type="submit" id="submit" name="search" value="{L_SEARCH}" />
+				</form>
+			  
+			<span class="corners-bottom"><span></span></span></div>
+		</div>
+		
+		<!-- IF S_DISPLAY_RANDOM_BLOCK and .rand_ad and S_RANDOM_LEFT -->
+			<div class="panel bg2">
+				<div class="inner"><span class="corners-top"><span></span></span>
+					<h3>{L_CL_RANDOM_AD}</h3>
+			    <!-- BEGIN rand_ad -->
+  		      <div style="<!-- IF not rand_ad.S_LAST_ROW -->border-bottom: 1px solid #CCCCCC;<!-- ENDIF --> padding: 5px 0; font-size: 10px;">
+              <div style="width: 100px; height: 100px; float: left; margin-right: 5px;">
+                <a href="{rand_ad.AD_LINK}" style="display: inline-block;">
+                <!-- IF rand_ad.THUMB -->
+                  <span style="display: inline-block; background: url('{rand_ad.THUMB}') no-repeat 50% 0; width: 100px; height: 100px;"></span>
+                <!-- ELSE -->
+                  <span style="display: inline-block; background: url('{T_THEME_PATH}/images/noimage.gif') no-repeat 50% 50%; width: 100px; height: 100px;"></span>
+                <!-- ENDIF -->
+                </a>
+  						</div>
+    					<a href="{rand_ad.AD_LINK}"><strong>{rand_ad.AD_TITLE}</strong></a><br />
+    					{L_CL_IN_CAT} <strong>{rand_ad.CATEGORY}</strong><br />
+    					<strong>{L_CL_PRICE}:</strong> {rand_ad.AD_PRICE}<br />
+    					<strong>{L_CL_SELLER}:</strong> {rand_ad.AD_POSTER}
+  						<div class="clear"></div>
+  					</div>
+					<!-- END rand_ad -->
+				<span class="corners-bottom"><span></span></span></div>
+			</div>
+		<!-- ENDIF -->
+
+		<!-- IF S_DISPLAY_HOT_BLOCK and .hot_ad and S_HOT_LEFT -->
+			<div class="panel bg2">
+				<div class="inner"><span class="corners-top"><span></span></span>
+					<h3>{L_CL_HOT_AD}</h3>
+			    <!-- BEGIN hot_ad -->
+						<div style="<!-- IF not hot_ad.S_LAST_ROW -->border-bottom: 1px solid #CCCCCC;<!-- ENDIF --> padding: 5px 0; font-size: 10px;">
+              <div style="width: 100px; height: 100px; float: left; margin-right: 5px;">
+                <a href="{hot_ad.AD_LINK}" style="display: inline-block;">
+                <!-- IF hot_ad.THUMB -->
+                  <span style="display: inline-block; background: url('{hot_ad.THUMB}') no-repeat 50% 0; width: 100px; height: 100px;"></span>
+                <!-- ELSE -->
+                  <span style="display: inline-block; background: url('{T_THEME_PATH}/images/noimage.gif') no-repeat 50% 50%; width: 100px; height: 100px;"></span>
+                <!-- ENDIF -->
+                </a>
+  						</div>
+    					<a href="{hot_ad.AD_LINK}"><strong>{hot_ad.AD_TITLE}</strong></a><br />
+    					{L_CL_IN_CAT} <strong>{hot_ad.CATEGORY}</strong><br />
+    					<strong>{L_CL_PRICE}:</strong> {hot_ad.AD_PRICE}<br />
+    					<strong>{L_CL_SELLER}:</strong> {hot_ad.AD_POSTER}
+  						<div class="clear"></div>
+  					</div>
+					<!-- END hot_ad -->
+				<span class="corners-bottom"><span></span></span></div>
+			</div>
+		<!-- ENDIF -->
+
+	</div>
+
+<div class="classifieds_copyright">{L_CL_CLASSIFIEDS_COPYRIGHT}</div>
+
+<!-- INCLUDE overall_footer.html -->

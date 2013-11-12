@@ -1,0 +1,19 @@
+Subject: "New advertisement on {SITE_NAME}"
+
+Hello {USERNAME},
+
+A new advertisement has been posted on {SITE_NAME}.
+
+ADVERTISEMENT INFORMATION
+_____________________________________________________________________
+
+Posted by : {POSTER}
+Price : {PRICE}
+
+{TITLE}
+
+{DESCRIPTION}
+
+View this advertisement: {AD_LINK}
+
+{EMAIL_SIG}

@@ -1,0 +1,79 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{L_ACP_CLASSIFIEDS_RULES_TITLE}</h1>
+
+<fieldset>
+  <!-- IF RULES != 'general' --><h3 style="margin: 12px 0;"><a href="{GENERAL_RULES}">{L_EDIT} {L_ACP_CLASSIFIEDS_RULES1}</a></h3><!-- ENDIF -->
+	<!-- IF RULES != 'buyer' --><h3 style="margin: 12px 0;"><a href="{BUYER_RULES}">{L_EDIT} {L_ACP_CLASSIFIEDS_RULES2}</a></h3><!-- ENDIF -->
+	<!-- IF RULES != 'seller' --><h3 style="margin: 12px 0;"><a href="{SELLER_RULES}">{L_EDIT} {L_ACP_CLASSIFIEDS_RULES3}</a></h3><!-- ENDIF -->
+</fieldset>
+
+<!-- IF RULES == 'general' || RULES == 'buyer' || RULES == 'seller' -->
+	<form id="postform" name="postform" method="post" action="{U_ACTION}">
+
+		<fieldset>
+			<legend>{L_ACP_CLASSIFIEDS_RULES}</legend>
+
+	    <dl>
+				<dt><label for="rules_title">{L_RULES_TITLE}:</label></dt>
+				<dd><input type="text" id="rules_title" name="rules_title" value="{RULES_TITLE}"/></dd>
+			</dl>
+
+			<dl>
+				<dt><label for="display_rules">{L_RULES_DISPLAY}</label></dt>
+				<dd>
+					<input type="radio" class="radio" name="display_rules" id="display_rules" value="1" <!-- IF DISPLAY_RULES -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+					<input type="radio" class="radio" name="display_rules" id="display_rules" value="0" <!-- IF not DISPLAY_RULES -->checked="checked"<!-- ENDIF --> /> {L_NO}
+				</dd>
+			</dl>
+
+			<dl>
+				<dt><label for="display_as_link">{L_DISPLAY_AS_LINK}</label><br /><span>{L_DISPLAY_AS_LINK_EXPLAIN}</span></dt>
+				<dd>
+					<input type="radio" class="radio" name="display_as_link" id="display_as_link" value="1" <!-- IF DISPLAY_AS_LINK -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+					<input type="radio" class="radio" name="display_as_link" id="display_as_link" value="0" <!-- IF not DISPLAY_AS_LINK -->checked="checked"<!-- ENDIF --> /> {L_NO}
+				</dd>
+			</dl>
+
+	    <!-- IF RULES_ID == '3' -->
+				<dl>
+					<dt><label for="must_agree">{L_MUST_AGREE}</label><br /><span>{L_MUST_AGREE_EXPLAIN}</span></dt>
+					<dd>
+						<input type="radio" class="radio" name="must_agree" id="must_agree" value="1" <!-- IF MUST_AGREE -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+						<input type="radio" class="radio" name="must_agree" id="must_agree" value="0" <!-- IF not MUST_AGREE -->checked="checked"<!-- ENDIF --> /> {L_NO}
+					</dd>
+				</dl>
+			<!-- ENDIF -->
+			
+			<!-- IF S_PREVIEW -->
+				<table cellspacing="1">
+					<thead>
+						<tr><th colspan="2">{L_PREVIEW}</th></tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>{PREVIEW_TEXT}</td>
+						</tr>
+					</tbody>
+				</table>
+			<!-- ENDIF -->
+
+			<dl>
+				  <!-- INCLUDE ./acp_classifieds_bbcodes.html -->
+					<textarea name="rules_text" id="rules_text" rows="15" cols="70" style="width:95%;font-size: 11px;margin-top: 5px;">{RULES_TEXT}</textarea>
+			</dl>
+
+			<input type="hidden" value="{RULES_ID}" name="rules_id" />
+			
+			<p class="submit-buttons" style="font-size: 12px;">
+				<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+				<input type="submit" name="preview" value="{L_PREVIEW}" class="button2" />&nbsp;
+				<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+			</p>
+		</fieldset>
+
+	</form>
+	
+<!-- ENDIF -->
+
+<!-- INCLUDE overall_footer.html -->

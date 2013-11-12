@@ -1,0 +1,164 @@
+<!-- INCLUDE overall_header.html -->
+
+<h1>{L_ACP_CLASSIFIEDS}</h1>
+
+<form method="post" action="{U_ACTION}">
+
+	<fieldset>
+		<legend>{L_RECENT_ADS_BLOCK}</legend>
+
+		<dl>
+			<dt><label for="categorie">{L_DISPLAY_ADS_ON_INDEX}</label><br />{L_DISPLAY_ADS_ON_INDEX_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="display_ads_on_index" id="display_ads_on_index" value="1" <!-- IF DISPLAY_ADS_ON_INDEX -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="display_ads_on_index" id="display_ads_on_index" value="0" <!-- IF not DISPLAY_ADS_ON_INDEX -->checked="checked"<!-- ENDIF --> /> {L_NO}
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="categorie">{L_RECENT_ADS_PLACE}</label><br />{L_RECENT_ADS_PLACE_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="recent_ads_place" id="recent_ads_place" value="1" <!-- IF RECENT_ADS_PLACE -->checked="checked"<!-- ENDIF --> /> {L_TOP} &nbsp;
+				<input type="radio" class="radio" name="recent_ads_place" id="recent_ads_place" value="0" <!-- IF not RECENT_ADS_PLACE -->checked="checked"<!-- ENDIF --> /> {L_BOTTOM}
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="categorie">{L_NUMBER_ADS_ON_INDEX}</label><br />{L_NUMBER_ADS_ON_INDEX_EXPLAIN}</dt>
+			<dd>
+				<input type="text" size="2" id="ad_num_display_on_index" name="ad_num_display_on_index" value="{AD_NUM_DISPLAY_ON_INDEX}">
+			</dd>
+		</dl>
+  </fieldset>
+  
+  <fieldset>
+		<legend>{L_RANDOM_ADS_BLOCK}</legend>
+  
+  	<dl>
+			<dt><label for="categorie">{L_DISPLAY_RAND_ADS_ON_INDEX}</label><br />{L_DISPLAY_RAND_ADS_ON_INDEX_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="display_rand_ads_on_index" id="display_rand_ads_on_index" value="1" <!-- IF DISPLAY_RAND_ADS_ON_INDEX -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="display_rand_ads_on_index" id="display_rand_ads_on_index" value="0" <!-- IF not DISPLAY_RAND_ADS_ON_INDEX -->checked="checked"<!-- ENDIF --> /> {L_NO}
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="categorie">{L_RAND_ADS_PLACE}</label><br />{L_RAND_ADS_PLACE_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="rand_ads_place" id="rand_ads_place" value="1" <!-- IF RAND_ADS_PLACE -->checked="checked"<!-- ENDIF --> /> {L_TOP} &nbsp;
+				<input type="radio" class="radio" name="rand_ads_place" id="rand_ads_place" value="0" <!-- IF not RAND_ADS_PLACE -->checked="checked"<!-- ENDIF --> /> {L_BOTTOM}
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="categorie">{L_NUMBER_RAND_ADS_ON_INDEX}</label><br />{L_NUMBER_RAND_ADS_ON_INDEX_EXPLAIN}</dt>
+			<dd>
+				<input type="text" size="2" id="rand_ad_num_display_on_index" name="rand_ad_num_display_on_index" value="{RAND_AD_NUM_DISPLAY_ON_INDEX}">
+			</dd>
+		</dl>
+  </fieldset>
+  
+  <fieldset>
+		<legend>{L_RANDOM_ADS_CLASSIFIEDS_SETTINGS}</legend>
+
+  	<dl>
+			<dt><label for="categorie">{L_DISPLAY_RAND_ADS_ON_MOD_INDEX}</label><br />{L_DISPLAY_RAND_ADS_ON_MOD_INDEX_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="display_rand_miniblock" id="display_rand_miniblock" value="1" <!-- IF DISPLAY_RAND_MINIBLOCK -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="display_rand_miniblock" id="display_rand_miniblock" value="0" <!-- IF not DISPLAY_RAND_MINIBLOCK -->checked="checked"<!-- ENDIF --> /> {L_NO}
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="categorie">{L_RAND_ADS_LEFT}</label><br />{L_RAND_ADS_LEFT_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="rand_miniblock_place" id="rand_miniblock_place" value="1" <!-- IF RAND_MINIBLOCK_PLACE -->checked="checked"<!-- ENDIF --> /> {L_LEFT} &nbsp;
+				<input type="radio" class="radio" name="rand_miniblock_place" id="rand_miniblock_place" value="0" <!-- IF not RAND_MINIBLOCK_PLACE -->checked="checked"<!-- ENDIF --> /> {L_BOTTOM}
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="categorie">{L_NUMBER_RAND_ADS_ON_MOD_INDEX}</label><br />{L_NUMBER_RAND_ADS_ON_MOD_INDEX_EXPLAIN}</dt>
+			<dd>
+				<input type="text" size="2" id="rand_miniblock_num_ads" name="rand_miniblock_num_ads" value="{RAND_MINIBLOCK_NUM_ADS}">
+			</dd>
+		</dl>
+  </fieldset>
+  
+  <fieldset>
+		<legend>{L_HOT_ADS_CLASSIFIEDS_SETTINGS}</legend>
+		<dl>
+			<dt><label for="categorie">{L_DISPLAY_HOT_ADS}</label><br />{L_DISPLAY_HOT_ADS_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="display_hot_ads" id="display_hot_ads" value="1" <!-- IF DISPLAY_HOT_ADS -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="display_hot_ads" id="display_hot_ads" value="0" <!-- IF not DISPLAY_HOT_ADS -->checked="checked"<!-- ENDIF --> /> {L_NO}
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="categorie">{L_HOT_BLOCK_PLACE}</label><br />{L_HOT_BLOCK_PLACE_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="hot_block_place" id="hot_block_place" value="1" <!-- IF HOT_BLOCK_PLACE -->checked="checked"<!-- ENDIF --> /> {L_LEFT} &nbsp;
+				<input type="radio" class="radio" name="hot_block_place" id="hot_block_place" value="0" <!-- IF not HOT_BLOCK_PLACE -->checked="checked"<!-- ENDIF --> /> {L_BOTTOM}
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="categorie">{L_HOT_ADS_NUM}</label><br />{L_HOT_ADS_NUM_EXPLAIN}</dt>
+			<dd>
+				<input type="text" size="2" id="hot_ads_num" name="hot_ads_num" value="{HOT_ADS_NUM}">
+			</dd>
+		</dl>
+  </fieldset>
+  
+  <fieldset>
+		<legend>{L_ADVERTISERS_ADS_CLASSIFIEDS_SETTINGS}</legend>
+		<dl>
+			<dt><label for="categorie">{L_DISPLAY_ADVERTISERS_ADS}</label><br />{L_DISPLAY_ADVERTISERS_ADS_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="display_advertisers_ads" id="display_advertisers_ads" value="1" <!-- IF DISPLAY_ADVERTISERS_ADS -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="display_advertisers_ads" id="display_advertisers_ads" value="0" <!-- IF not DISPLAY_ADVERTISERS_ADS -->checked="checked"<!-- ENDIF --> /> {L_NO}
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="categorie">{L_ADVERTISERS_BLOCK_PLACE}</label><br />{L_ADVERTISERS_BLOCK_PLACE_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="advertisers_block_place" id="advertisers_block_place" value="1" <!-- IF ADVERTISERS_BLOCK_PLACE -->checked="checked"<!-- ENDIF --> /> {L_LEFT} &nbsp;
+				<input type="radio" class="radio" name="advertisers_block_place" id="advertisers_block_place" value="0" <!-- IF not ADVERTISERS_BLOCK_PLACE -->checked="checked"<!-- ENDIF --> /> {L_BOTTOM}
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="categorie">{L_ADVERTISERS_ADS_NUM}</label><br />{L_ADVERTISERS_ADS_NUM_EXPLAIN}</dt>
+			<dd>
+				<input type="text" size="2" id="advertisers_ads_num" name="advertisers_ads_num" value="{ADVERTISERS_ADS_NUM}">
+			</dd>
+		</dl>
+  </fieldset>
+  
+  <fieldset>
+		<legend>{L_PROFILE_LAST_ADS_SETTINGS}</legend>
+		<dl>
+			<dt><label>{L_DISPLAY_PROFILE_LAST_ADS}</label><br />{L_DISPLAY_PROFILE_LAST_ADS_EXPLAIN}</dt>
+			<dd>
+				<input type="radio" class="radio" name="display_profile_last_ads" id="display_profile_last_ads" value="1" <!-- IF DISPLAY_PROFILE_LAST_ADS -->checked="checked"<!-- ENDIF --> /> {L_YES} &nbsp;
+				<input type="radio" class="radio" name="display_profile_last_ads" id="display_profile_last_ads" value="0" <!-- IF not DISPLAY_PROFILE_LAST_ADS -->checked="checked"<!-- ENDIF --> /> {L_NO}
+			</dd>
+		</dl>
+
+		<dl>
+			<dt><label for="profile_num_last_ads">{L_PROFILE_LAST_ADS_NUM}</label><br />{L_PROFILE_LAST_ADS_NUM_EXPLAIN}</dt>
+			<dd>
+				<input type="text" size="2" id="profile_num_last_ads" name="profile_num_last_ads" value="{PROFILE_LAST_ADS_NUM}">
+			</dd>
+		</dl>
+  </fieldset>
+  
+	<p class="submit-buttons">
+		<input class="button1" type="submit" id="submit" name="submit" value="{L_SUBMIT}" />&nbsp;
+		<input class="button2" type="reset" id="reset" name="reset" value="{L_RESET}" />
+	</p>
+</form>
+
+<!-- INCLUDE overall_footer.html -->

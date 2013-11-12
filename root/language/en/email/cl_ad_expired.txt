@@ -1,0 +1,14 @@
+Subject: "Your advertisement on {SITE_NAME} has expired"
+
+Hello {USERNAME},
+
+you have posted an advertisement on {SITE_NAME} on {AD_DATE} and it has expired on {EXPIRE_DATE}.
+
+Your advertisement is still marked as Active. If you want to extend this ad please contact the Board Administrator or Moderator with the info about your ad.
+
+Advertisement info :
+Title : {TITLE}
+Price : {PRICE}
+Link: {AD_LINK}
+
+{EMAIL_SIG}

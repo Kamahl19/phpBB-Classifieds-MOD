@@ -1,0 +1,37 @@
+<!-- IF .ad -->
+	<div class="forabg">
+		<div class="inner"><span class="corners-top"><span></span></span>
+			<ul class="topiclist">
+				<li class="header">
+					<dl>
+						<dd><strong>{L_RECENT_ADS}</strong></dd>
+					</dl>
+				</li>
+			</ul>
+	    <ul class="topiclist forums">
+	      <!-- BEGIN ad -->
+					<li class="row bg2 classifieds_block" <!-- IF ad.S_LAST_ROW and ad.S_ROW_COUNT is even -->style="width:100%;"<!-- ENDIF -->>
+						<dl>
+	      			<dd>
+								<div style="width: 50px; height: 50px; float: left; padding: 0 5px;">
+                  <a href="{ad.AD_LINK}" style="display: inline-block;">
+                    <!-- IF ad.THUMB -->
+  										<span style="display: inline-block; background: url('{ad.THUMB}') no-repeat 50% 50%; width: 50px; height: 50px;"></span>
+  		              <!-- ELSE -->
+  		                <span style="display: inline-block; background: url('{T_THEME_PATH}/images/noimage.gif') no-repeat 50% 50%; width: 50px; height: 50px;"></span>
+  									<!-- ENDIF -->
+                  </a>
+  							</div>
+								<div class="cl_desc">
+									<a href="{ad.AD_LINK}"><b>{ad.AD_TITLE}</b></a><br />
+	        				{L_CL_IN_CAT} <b>{ad.CATEGORY}</b><br />
+									<b>{L_CL_PRICE}</b>: {ad.AD_PRICE}	<i>{L_POST_BY_AUTHOR}</i> {ad.AD_POSTER}
+	            	</div>
+							</dd>
+						</dl>
+					</li>
+				<!-- END ad -->
+	    </ul>
+		<span class="corners-bottom"><span></span></span></div>
+	</div>
+<!-- ENDIF -->

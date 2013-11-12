@@ -1,0 +1,130 @@
+<!-- INCLUDE overall_header.html -->
+
+<script type="text/javascript">
+// <![CDATA[
+	function showMe (it, box) {
+	  var vis = (box.checked) ? "none" : "block";
+	  document.getElementById(it).style.display = vis;
+	}
+
+ function display(action, id)
+	{
+		if (action == 'show_edit')
+		{
+			document.getElementById("edit"+id).style.display = "block";
+			document.getElementById("edit_link"+id).href= "javascript:display('hide_edit', "+id+")";
+		}
+
+		if (action == 'hide_edit')
+		{
+			document.getElementById("edit"+id).style.display = "none";
+			document.getElementById("edit_link"+id).href= "javascript:display('show_edit', "+id+")";
+		}
+
+		if (action == 'show_delete')
+		{
+			document.getElementById("delete"+id).style.display = "block";
+			document.getElementById("delete_link"+id).href= "javascript:display('hide_delete', "+id+")";
+		}
+
+		if (action == 'hide_delete')
+		{
+			document.getElementById("delete"+id).style.display = "none";
+			document.getElementById("delete_link"+id).href= "javascript:display('show_delete', "+id+")";
+		}
+	}
+	
+// ]]>
+</script>
+
+<h1>{L_ACP_CLASSIFIEDS}</h1>
+
+<form method="post" action="{U_NEW_CAT}">
+	<fieldset>
+		<legend>{L_CATEGORIES}</legend>
+
+		<dl>
+			<dt><label for="name">{L_CATEGORIES}</label><br />{L_CATEGORIES_EXPLAIN}</dt>
+			<dd><input name="name" type="text" size="18" id="name" />
+				{L_PARENT}? <input type="checkbox" value="1" name="parent" value="parent" onclick="showMe('parents', this)" />
+			</dd>
+		</dl>
+
+		<dl>
+			<div id="parents" name="parents">
+				<dt><label for="parent_id">{L_PARENT}</label><br />{L_PARENTS_EXPLAIN}</dt>
+				<!-- BEGIN cat -->
+					<!-- IF cat.PARENT -->
+						<dd>
+							{cat.NAME}
+							<input type="radio" id="parent_id" name="parent_id" value="{cat.ID}" />
+						</dd>
+					<!-- ENDIF -->
+				<!-- END cat -->
+			</div>
+		</dl>
+
+		<input type="submit" name="submit" id="submit" value="{L_SUBMIT}" class="button1">
+	</fieldset>
+</form>
+
+
+	<table cellpadding="1" cellspacing="1">
+		<th>{L_CATEGORIES}</th>
+		<th>{L_OPTIONS}</th>
+		<th>{L_PURGE_CAT}</th>
+
+		<!-- BEGIN cat -->
+			<tr>
+
+				<td style="width: 60%; background-color: #F9F9F9; font-size: 12px;">
+					<!-- IF cat.PARENT --><strong style="color:#5EA2CB">{cat.NAME}</strong><!-- ELSE -->{cat.NAME} {cat.PARENT_CAT}<!-- ENDIF --> ({L_ID}: {cat.ID})
+					<div id="edit{cat.ID}" style="display:none;margin: 3px 0;">
+						<form method="post" action="{cat.EDIT_CAT}">
+							<input type="text" id="name" name="name" value="{cat.NAME}" /><br />
+							{L_PARENT} <input type="text" size="1" id="parent" name="parent" value="{cat.PARENT}" /> {L_PARENT_EXPLAIN}<br />
+							{L_PARENT_ID} <input size="1" type="text" id="parent_id" name="parent_id" value="{cat.PARENT_ID}" /> <br />
+							<input type="submit" id="submit" value="{L_SUBMIT}" class="button1" name="submit" />
+						</form>
+					</div>
+					<div id="delete{cat.ID}" style="display:none;margin: 5px 0;">
+      			<form method="post" action="{cat.DELETE_CAT}">
+      			  <span style="font-size:11px">{L_DELETE_CAT_EXPLAIN}</span><br />
+							{L_DELETE_CAT_EXPLAIN2} <input type="text" size="3" id="delete_cat" name="delete_cat" />
+							<br />
+							<input type="submit" id="submit" value="{L_SUBMIT}" class="button1" name="submit">
+						</form>
+					</div>
+				</td>
+
+				<td id="category" style="text-align:center" bgcolor="#DCEBFE" width="30%">
+					<a id="edit_link{cat.ID}" href="javascript:display('show_edit', {cat.ID})"><img src="images/icon_edit.gif" alt="edit" /></a>
+					<!-- IF cat.S_FIRST_ROW && not cat.S_LAST_ROW -->
+						{ICON_MOVE_UP_DISABLED}
+						<a href="{cat.U_MOVE_DOWN}">{ICON_MOVE_DOWN}</a>
+					<!-- ELSEIF not cat.S_FIRST_ROW && not cat.S_LAST_ROW -->
+						<a href="{cat.U_MOVE_UP}">{ICON_MOVE_UP}</a>
+						<a href="{cat.U_MOVE_DOWN}">{ICON_MOVE_DOWN}</a>
+					<!-- ELSEIF cat.S_LAST_ROW && not cat.S_FIRST_ROW -->
+						<a href="{cat.U_MOVE_UP}">{ICON_MOVE_UP}</a>
+						{ICON_MOVE_DOWN_DISABLED}
+					<!-- ELSE -->
+						{ICON_MOVE_UP_DISABLED}
+						{ICON_MOVE_DOWN_DISABLED}
+					<!-- ENDIF -->
+					<a id="delete_link{cat.ID}" <!-- IF not cat.PARENT -->href="javascript:display('show_delete', {cat.ID})"<!-- ELSE -->href="{cat.DELETE_PARENT_CAT}"<!-- ENDIF -->>{ICON_DELETE}</a>
+				</td>
+				
+				<td style="width:10%; background-color: #F9F9F9; font-size: 12px; text-align: center;">
+					<!-- IF not cat.PARENT -->
+						<form id="purge{cat.ID}" method="post" action="{cat.PURGE_CAT}">
+							<input class="button2" type="submit" id="purge_cat" name="purge_cat" value="{L_PURGE_CAT}" />
+						</form>
+          <!-- ENDIF -->
+        </td>
+
+			</tr>
+		<!-- END cat -->
+	</table>
+
+<!-- INCLUDE overall_footer.html -->
